@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Display Query String</title>
+</head>
+<body> 
+
+<p id="demo"></p>
+<script>
+
+var query = window.location.search.replace('?','').split('&'); 
+
+for (var i = 0; i < query.length; i++) {
+	document.write(query[i]);
+document.write("<br>");
+}
+
+
+
+</script>
+
+</body>
+</html>

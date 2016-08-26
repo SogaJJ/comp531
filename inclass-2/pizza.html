@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <title>submit an order </title>
+    <meta charset="utf-8">
+    <meta name="Jing" content="pizza">
+</head>
+
+<body>
+    <form id="myForm" method="GET" action="formProcessor.html">
+        
+        Account Name: 
+        <input type="text" name="name" >     
+
+        <p>
+        Address: <input type="text" name="add">
+        </p>
+
+        <p>
+        Phone: <input type="text" name="phone" title="not match">
+        </p>
+
+        <p>
+        Pizza Size<br>
+            <input type="radio" name="size" value="large"> Large
+            <input type="radio" name="size" value="medium"> medium
+            <input type="radio" name="size" value="small"> small
+        </p>
+        
+        <p>
+        Pizza Toppings <br>
+        <input type="checkbox" name="toppings" value="sausage">Sausage 
+        <input type="checkbox" name="toppings" value="Pepperoni">Pepperoni
+        <input type="checkbox" name="toppings" value="Olives">Olives 
+        <input type="checkbox" name="toppings" value="Anchovies">Anchovies 
+        <input type="checkbox" name="toppings" value="Onions">Onions 
+        </p>
+
+        <input type="submit" value="SUBMIT" onclick="return validForm()" />
+        <input type="reset" value="CLEAR">
+    </form>
+
+    <script type="text/javascript">
+		function validForm(form) {
+            var form = document.getElementById("myForm");    
+            var validate = (form.name.value != "" &&
+                           form.add.value != "" &&
+                           form.phone.value != "" &&
+                           form.size.value != "")
+
+            if (!validate) {
+                window.alert("fill all the form items")
+            }
+            
+                      
+
+
+
+            return validate
+            
+
+		}
+    </script>
+</body>
+
+</html>
