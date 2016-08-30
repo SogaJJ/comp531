@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+    <title>Hello HTML!</title>
+    <meta charset="utf-8">
+</head>
+
+<body onload="setTimeout(popAlert, 5000), interval = setInterval(countDown, 1000)">
+
+<table border="1">
+	<tr><td>Athenian</td><td>Owl</td></tr>
+	<tr><td colspan="2"><img src="http://explore.rice.edu/uploadedImages/Explore/Welcome_to_Rice/riceacademicseal1.jpg"></td></tr>
+</table>
+
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+
+
+<ul>
+	<li><a href="http://www.rice.edu">Rice</a></li>
+	<li><a href="http://www.chron.com">Houston Chronicle</a></li>
+	<li><a href="http://www.twitter.com">Twitter</a></li>
+	<li><a href="http://www.twosigma.com">TwoSigma</a></li>
+</ul>
+
+<textarea id="textarea" rows="10" cols="50"></textarea>
+<button onclick="clearTextArea()">Clear Textarea</button>
+<br>
+<span id="countDown">15</span>
+<button onclick="pauseCountDown()">Pause count down</button>
+<button onclick="resumeCountDown()">Resume count down</button>
+
+
+
+<script type="text/javascript">
+	var countDownIsOff = false
+
+	function clearTextArea() {
+		var textarea = document.getElementById('textarea')
+		textarea.value = ""
+	}
+
+	function popAlert() {
+		window.alert("the page will redirect when the counter reaches zero")
+	}
+
+	function countDown() {
+		var time = document.getElementById("countDown").innerHTML
+		if (time == 0) {
+			clearInterval(interval)
+			countDownIsOff = true			
+			window.location = "http://www.clear.rice.edu/comp431/sample/hello.html"
+		}
+		time--
+		document.getElementById("countDown").innerHTML = time
+	}
+
+	function resumeCountDown() {
+		if (countDownIsOff) {
+			interval = setInterval(countDown, 1000)
+			countDownIsOff = false
+		}
+	}
+
+	function pauseCountDown() {
+		if (!countDownIsOff) {
+			clearInterval(interval)
+			countDownIsOff = true		
+		}
+	}
+</script>
