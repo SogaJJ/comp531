@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <title>submit an order </title>
+    <meta charset="utf-8">
+    <meta name="Jing" content="index">
+</head>
+
+<body>
+    <form id="myForm" method="GET" action="formProcessor.html">
+        <p>
+        Account Name: 
+        <input type="text" name="accountName"  pattern="^[a-zA-Z][a-zA-Z0-9-_\.]{0,}$" required>     
+        </p>
+
+        <p>
+            Display Name (optional): <input type="text" name="displayName">
+        </p>
+
+        <p>
+            Phone Number: <input type="text" name="phone" pattern="[0-9]{10}" required>
+        </p>
+
+        <p>
+            Email: <input type="email" name="email" title="Enter a valid email address" required>
+        </p>
+
+        <p>
+            Date of Birth: <input type="date" id="dob" name="Date of Birth" required>
+        </p>
+
+        <p>
+            Zipcode: <input type="text" name="zipcode" pattern="[0-9]{5}" title="five digit number" required>
+        </p>
+
+        <p>
+            Password: <input type="password" id="pass1" name="password" required>
+        </p>
+
+        <p>
+            Password confirmation: <input type="password" id="pass2" name="passwordConfirmation" required>
+        </p>
+
+        <p>
+            <input type="hidden" id="timeStamp" name="timeStamp">
+        </p>
+
+        <input type="submit" value="SUBMIT" onclick="return validateForm()" />
+        <input type="reset" value="CLEAR">
+    </form>
+
+    <script type="text/javascript">
+        function validateForm() {
+            validatePassword();
+            validateAge();
+            var today = new Date();
+            var year = today.getYear() + 1900;
+            var currentDate = parseInt(year) + "-" + 
+                              parseInt(today.getMonth()) + "-" + 
+                              parseInt(today.getDay()) + "-" +
+                              parseInt(today.getHours()) + "h" +
+                              parseInt(today.getMinutes()) + "m" +
+                              parseInt(today.getSeconds()) + "s" +
+                              parseInt(today.getMilliseconds()) + "ms";
+            document.getElementById("timeStamp").value = currentDate;
+        }
+
+		function validatePassword() {           
+            var password = document.getElementById("pass1");
+            var confirm_password = document.getElementById("pass2");
+
+            if (password.value != confirm_password.value) {
+                confirm_password.setCustomValidity("Passwords Don't Match");
+            } else {
+                confirm_password.setCustomValidity("");
+            }         
+            return password.value == confirm_password.value
+		}
+
+        function validateAge() {
+            var dob = document.getElementById("dob");
+            var bornTime = new Date(dob.value);
+            var currentTime = new Date()
+            if (currentTime.getTime() - bornTime.getTime() < (18 * 365.25 * 24 * 60 * 60 * 1000)) {
+                dob.setCustomValidity("younger than 18! ")
+            } else {
+                dob.setCustomValidity("");
+            }
+        }
+    </script>
+</body>
+
+</html>
