@@ -1,8 +1,10 @@
 <!DOCTYPE html>
+<html lang="en-us">
 <head>
     <meta charset="utf-8" />
 	<title>Rice Book</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="author" content="Jing Guo">
 	<link rel="stylesheet" href="style.css">
 <script>
 window.onload = function() {
@@ -14,7 +16,6 @@ window.onload = function() {
 	var postField = document.getElementById("postField")
 
 	loginBtn.value = LOGIN
-
 	loginBtn.onclick = function() {
 		if (loginBtn.value == LOGIN) {
 			login()
@@ -41,11 +42,10 @@ window.onload = function() {
 		loginBtn.value=LOGIN // change the text of button to login
 		console.log('logout was clicked')
 	}
-
 }
 </script>
-
 </head>
+
 <body>
 
 <h1>Rice Book</h1>
