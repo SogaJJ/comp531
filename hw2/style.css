@@ -1,0 +1,40 @@
+.naviToProfile {
+	width: 600px;
+	margin-top: 50px;
+	margin-left: auto;
+	margin-right: auto;
+}
+h1 {
+	text-align: center;
+}
+.imageContainer {
+	position: left;
+	height: 160px;
+}
+img {
+	width: 200px;
+	height: auto;
+}
+table {
+	width: 1000px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+td.card {
+	width: 600px;
+}
+.card span {
+	color: red;
+}
+
+.profileInfo {
+	width: 600px;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 100px;
+}
+td.card {
+	padding: 5px;
+	border: 2px solid black
+}
