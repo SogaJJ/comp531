@@ -4,6 +4,18 @@ var email
 var zipcode
 var displayName
 
+function hidePass(checkbox) {
+    console.log("hidePass() is called" + ". id = " + checkbox.id)
+    if (checkbox.checked) {
+        document.getElementById("pass1").style.display = 'inline'   
+        document.getElementById("pass2").style.display = 'inline' 
+
+    } else {
+        document.getElementById("pass1").style.display = 'none'
+        document.getElementById("pass2").style.display = 'none'
+    }
+}
+
 function validateInfo() { 
     var invalidMessage = "" 
     // validate displya name
