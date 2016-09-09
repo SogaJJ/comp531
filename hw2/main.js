@@ -5,19 +5,22 @@ var BtnToIntervalHash = {}
 var STOP = "stop"
 var RESUME = "resume"
 
+// initialization by mapping btn to image
 function init() {
 	console.log("init() has been called")
 	var imageTagList = document.getElementsByClassName("image")
-	for (var i = 0; i < imageTagList.length; i++) {
-		BtnToImageHash["btn_" + imageTagList[i].id] = imageTagList[i]
+	Array.prototype.forEach.call(imageTagList, function(individualImage) {
+		BtnToImageHash["btn_" + individualImage.id] = individualImage
 		;(function(){
-			var imageObject = new image(imageTagList[i])
-			var interval = setInterval(function(){imageObject.iterator()}, Math.floor((Math.random() * 5) + 1) * 1000)
-			BtnToIntervalHash["btn_" + imageTagList[i].id] = interval
+			var imageObject = new image(individualImage)
+			var interval = setInterval(function(){imageObject.iterator()}, 
+					Math.floor((Math.random() * 5) + 1) * 1000)
+			BtnToIntervalHash["btn_" + individualImage.id] = interval
 		})()
-	}
+	});
 }
 
+// wrap the image object to include count number in the image list and imgae iterator
 function image(imageObject) {
 	this.count = 0
 	this.imageObject = imageObject
@@ -27,6 +30,7 @@ function image(imageObject) {
 	}
 }
 
+// button function to change status of the image
 function change(id) {
 	var btn = document.getElementById(id)
 	if (btn.value == STOP) {
@@ -35,7 +39,8 @@ function change(id) {
 	} else {
 		;(function(){
 			var imageObject = new image(BtnToImageHash[id])
-			var interval = setInterval(function(){imageObject.iterator()}, Math.floor((Math.random() * 5) + 1) * 1000)
+			var interval = setInterval(function(){imageObject.iterator()}, 
+					Math.floor((Math.random() * 5) + 1) * 1000)
 			BtnToIntervalHash[id] = interval
 		})()		
 		btn.value = STOP

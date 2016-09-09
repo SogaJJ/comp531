@@ -4,6 +4,7 @@ var email
 var zipcode
 var displayName
 
+// to hide the password
 function hidePass(checkbox) {
     console.log("hidePass() is called" + ". id = " + checkbox.id)
     if (checkbox.checked) {
@@ -16,6 +17,7 @@ function hidePass(checkbox) {
     }
 }
 
+// validate the input field
 function validateInfo() { 
     var invalidMessage = "" 
     // validate displya name
@@ -53,6 +55,7 @@ function validateInfo() {
     }
 }
 
+// collect the update message
 function updateProfile() {
     var updateMessage = ""
     if (displayName != "" && displayName != document.getElementById("displayName").value) {
@@ -74,6 +77,7 @@ function updateProfile() {
     update(); 
 }
 
+// update the attribute
 function update() {
     if (displayName != "" && displayName != document.getElementById("displayName").value) {
         document.getElementById("displayName").innerHTML = displayName
