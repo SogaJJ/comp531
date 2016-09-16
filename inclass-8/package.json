@@ -14,7 +14,7 @@
     "test": "mocha --colors --compilers js:babel-core/register --recursive src/**/*.spec.js",
     "test:watch": "npm run test -- -w"
   },
-  "author": "Scott Pollack",
+  "author": "Jing Guo",
   "engines": {
     "node": ">=6",
     "npm": ">=3"
