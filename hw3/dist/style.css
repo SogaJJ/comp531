@@ -43,6 +43,12 @@ tr.spaced > td{
 	padding-top: 5px;
 }
 
+.red-light {
+	border: solid black 1pt;
+	background-color: #ffcccc;
+	border-radius: 30px;
+}
+
 .orange-light {
 	border: solid black 1pt;
 	background-color: #FFC966;
@@ -60,14 +66,14 @@ tr.spaced > td{
 .lavender-light {
 	border: solid black 1pt;
 	background-color: lavender;
-	border-radius: 30px;
+	border-radius: 20px;
 }
 
  .fixed-size {
 	 height: 300px;
  }
  .fixed-size-short {
-	 height: 200px;
+	 height: 250px;
  }
  .fixed-size-tall {
 	 border: black solid 1px;
