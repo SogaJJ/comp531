@@ -37,30 +37,32 @@ function validateInfo() {
     // validate phone
     phone = document.getElementById("phoneField").value
     if (phone != "" && !/^([0-9]{10})$/.test(phone)) {
-        invalidMessage += "  - Phone format wrong (10 digit number only) \n"
+        invalidMessage += "  - Phone format wrong (10 digit number only) <br />"
     }
 
     // validate email
     email = document.getElementById("emailField").value
     if (email != "" && !/^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$/.test(email)) {
-        invalidMessage += "  - Email format wrong \n"
+        invalidMessage += "  - Email format wrong <br />"
     }
 
     // validate zipcode
     zipcode = document.getElementById("zipcodeField").value
     if (zipcode != "" && !/^[0-9]{5}$/.test(zipcode)) {
-        invalidMessage += "  - Zipcode format wrong (5 digit number only) \n"
+        invalidMessage += "  - Zipcode format wrong (5 digit number only) <br />"
     }
 
     // validate password
     password = document.getElementById("pass1Field").value;
     var confirm_password = document.getElementById("pass2Field").value;
     if (password != confirm_password) {
-        invalidMessage += "  - Password Don't match \n"
+        invalidMessage += "  - Password Don't match <br />"
     }
 
     if (invalidMessage != "") {
-        window.alert("Invalid Input: \n" + invalidMessage)
+        document.getElementById('profile_msg_box').style.display = "inline"
+        document.getElementById('profile_msg_type').innerHTML = "Invalid format: <br />"
+        document.getElementById('profile_msg_content').innerHTML = invalidMessage
     } else {
         updateProfile()
     }
@@ -70,21 +72,27 @@ function validateInfo() {
 function updateProfile() {
     var updateMessage = ""
     if (displayName != "" && displayName != document.getElementById("displayName").value) {
-        updateMessage += "  - Display Name \n"
+        updateMessage += "  - Display Name <br />"
     }
     if (phone != "" && phone != document.getElementById("phone").value) {
-        updateMessage += "  - Phone \n"
+        updateMessage += "  - Phone <br />"
     }
     if (email != "" && email != document.getElementById("email").value) {
-        updateMessage += "  - Email \n"
+        updateMessage += "  - Email <br />"
     }
     if (zipcode != "" && zipcode != document.getElementById("zipcode").value) {
-        updateMessage += "  - Zipcode \n"
+        updateMessage += "  - Zipcode <br />"
     }
     if (password != "" && password != document.getElementById("pass1").value) {
-        updateMessage += "  - Password \n"
+        updateMessage += "  - Password <br />"
     }
-    window.alert("The following fields will be updated: \n" + updateMessage)
+    // window.alert("The following fields will be updated: \n" + updateMessage)
+    document.getElementById('profile_msg_box').style.display = "inline"
+    document.getElementById('profile_msg_type').innerHTML = "Following will be updated: <br />"
+    document.getElementById('profile_msg_content').innerHTML = updateMessage
+    setTimeout(function(){
+        document.getElementById('profile_msg_box').style.display = "none"
+    }, 3000)
     update();
 }
 

@@ -26,6 +26,13 @@
 	margin-right: auto;
 	text-align: center;
 }
+
+.row-align-left {
+	padding-left: 5px;
+	text-align: left;
+}
+
+
 .center-hor {
 	margin-left: auto;
 	margin-right: auto;
@@ -46,7 +53,7 @@ tr.spaced > td{
 .red-light {
 	border: solid black 1pt;
 	background-color: #ffcccc;
-	border-radius: 30px;
+	border-radius: 15px;
 }
 
 .orange-light {
@@ -99,9 +106,14 @@ tr.spaced > td{
 	border: black solid 0.5px;
 }
 
+#index_msg {
+	display: none;
+	color: red;
+}
 
-
-
+#profile_msg_box {
+	display: none;
+}
 .col-border {
 	border: solid black 1pt;
 	border-radius: 30px;

@@ -38,7 +38,7 @@
 		</div>
 
 		<div class="row row-medium">
-	      <div class="col-md-4 col-md-offset-1 lavender-light fixed-size">
+	      <div class="col-md-3 col-md-offset-1 lavender-light fixed-size">
 			  <h4>Current information</h4>
 			  <table class="table table-hover table-borderless">
 	  			<tr class="spaced">
@@ -69,13 +69,22 @@
 				<tr class="spaced" >
 						<td><span id="passDescription">Password</span></td>
 		  				<td><span id="pass1">12345</span> </td>
-
 	  			</tr>
 
 	  		</table>
 		  </div>
 
-	      <div class="col-md-4 col-md-offset-2 orange-light fixed-size">
+			<div class="col-md-3 col-md-offset-0" >
+				<div class="col-md-10 col-md-offset-1 red-light" id="profile_msg_box">
+					<h5>Update Status</h5>
+					<div class="row row-align-left">
+						<span id="profile_msg_type">Invalid format: </span>
+						<p id="profile_msg_content"></p>
+					</div>
+				</div>
+			</div>
+
+	      <div class="col-md-4 col-md-offset-0 orange-light fixed-size">
 			  <h4>Update information</h4>
 			  <table class="table center-hor table-borderless">
 					<tr class="spaced">
@@ -114,6 +123,7 @@
 	    </div>
 
 		<div class="row row-medium">
+
 			<div class="col-md-4 col-md-offset-7">
 				<button type="button" class="btn btn-danger btn-md" onmousedown="showPass()" onmouseup="hidPass()">Show password</button>
 				<button type="button" class="btn btn-primary btn-md" onclick="validateInfo()">update</button>
