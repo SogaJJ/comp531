@@ -87,7 +87,9 @@ tr.spaced > td{
 	 padding-top: 10px;
 	 height: 400px;
  }
-
+.fixed-size-login {
+	height: 150px;
+}
  #get_new_picture {
 	 display: none;
  }

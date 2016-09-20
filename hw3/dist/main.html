@@ -11,7 +11,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
-<body>
+<body onload="extractForm()">
 	<div class="main-container well">
 		<div class="row row-text-center">
 			<h1>Main Page</h1>
@@ -31,15 +31,15 @@
 					</div>
 
 					<div class="row row-narrow">
-						<h4>Jing Guo</h4>
+						<h4 id="main_page_name">First Last</h4>
+					</div>
+
+					<div class="row row-narrow" >
+						<h5 id="oldPost">Engjoy everyday !</h5>
 					</div>
 
 					<div class="row row-narrow">
-						<h5>Engjoy everyday !</h5>
-					</div>
-
-					<div class="row row-narrow">
-						<input type="text" size="15"/><button class="btn btn-success">Update</button>
+						<input type="text" id="newPost" size="15"/><button class="btn btn-success" onclick="postStatus()">Update</button>
 					</div>
 					<div class="row row-narrow">
 					</div>
@@ -131,7 +131,7 @@
 				</div>
 
 				<div class="row row-medium">
-					<textarea id="search_area" rows="1" cols="100" >Search here ......</textarea>
+					<textarea id="search_area" rows="1" cols="100" placeholder="Search here ......"></textarea>
 				</div>
 
 				<div class="row row-medium">

@@ -1,3 +1,11 @@
+(function(){
+    console.log('in function')
+    var query = window.location.search.replace('?','').split('&')
+    query.forEach(function(item){
+        console.log(item)
+    })
+})()
+
 var password = ""
 var phone
 var email
