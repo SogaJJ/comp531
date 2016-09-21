@@ -1,10 +1,15 @@
+function assignTime (){
+	var els = document.getElementsByClassName("postedTime");
+	[].forEach.call(els, function (el) {
+		var d = new Date()
+		el.innerHTML = d
+	});
+}
 
 function extractForm() {
-	console.log('extractForm')
 	var query = window.location.search.replace('?','').split('&')
 	query.forEach(function(item){
 		var pair = item.split('=')
-		console.log('query')
 		if (pair[0] == "accountName") {
 			document.getElementById('main_page_name').innerHTML = pair[1]
 		}

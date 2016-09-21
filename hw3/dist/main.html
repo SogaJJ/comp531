@@ -11,7 +11,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
-<body onload="extractForm()">
+<body onload="extractForm();assignTime()">
 	<div class="main-container well">
 		<div class="row row-text-center">
 			<h1>Main Page</h1>
@@ -27,7 +27,7 @@
 					</div>
 
 					<div class="row row-narrow">
-						<img src="image\image0.jpg" class="img-rounded" alt="Cinque Terre" width="200px">
+						<img src="image\selfie.jpg" class="img-rounded" alt="Cinque Terre" width="200px">
 					</div>
 
 					<div class="row row-narrow">
@@ -56,6 +56,9 @@
 							<h4>Hulk <small>Smash! Smash! Smash!</small></h4>
 						</div>
 					</div>
+
+					<button class="btn btn-primary">unfollow</button>
+
 					<hr class="hr-primary"/>
 					<div class="row row-narrow">
 						<div class="row row-narrow">
@@ -65,6 +68,8 @@
 							<h4>Tony <small>This seems interesting...</small></h4>
 						</div>
 					</div>
+
+					<button class="btn btn-primary">unfollow</button>
 					<hr class="hr-primary"/>
 					<div class="row row-narrow">
 						<div class="row row-narrow">
@@ -74,6 +79,8 @@
 							<h4>Thor <small>Thunder! Follow my command!</small></h4>
 						</div>
 					</div>
+
+					<button class="btn btn-primary">unfollow</button>
 					<hr class="hr-primary"/>
 					<div class="row row-narrow">
 						<div class="row row-narrow">
@@ -83,6 +90,8 @@
 							<h4>Roger <small>Follow me!</small></h4>
 						</div>
 					</div>
+
+					<button class="btn btn-primary">unfollow</button>
 					<hr class="hr-primary"/>
 					<div class="row row-narrow">
 						<input type="text" size="15" /><button class="btn btn-success">Add User</button>
@@ -135,250 +144,261 @@
 				</div>
 
 				<div class="row row-medium">
-					<div class="col-md-11 col-md-offset-0">
-						<div class="col-md-3 col-md-offset-1 orange-light">
-							<div class="row row-narrow">
 
-							</div>
-							<div class="row row-narrow fixed-size-short">
-								<img src="image\image0.jpg" class="img-rounded" width="150px">
-								<p>
+						<div class="col-md-4 col-md-offset-0">
+							<div class="col-md-11 col-md-offset-1 orange-light">
+								<div class="row row-narrow"></div>
+								<div class="row row-narrow fixed-size-short">
+									<img src="image\image1.jpg" class="img-rounded" width="200px">
 
-								</p>
-								<p>
-									Lorem ipsum dolor sit amet, consectetur adipiscing elit, velit esse cillum dolore eu fugiat
-									Lorem ipsum dolor sit amet, consectetur adipiscing elit, velit esse cillum dolore eu fugiat
-								</p>
+									<p>
+										Lorem ipsum dolor sit amet, consectetur adipiscing elit, velit esse cillum dolore eu fugiat
+										Lorem ipsum dolor sit amet, consectetur adipiscing elit, velit esse cillum dolore eu fugiat
+									</p>
+								</div>
+								<div class="row row-narrow">
+									<p>
+										<b>Author:</b> Roger
+									</p>
+									<p>
+										<b>Posted On: </b> <span class="postedTime"></span>
+									</p>
+								</div>
+								<div class="row row-narrow">
+									<button class="btn btn-success">Edit</button>
+									<button class="btn btn-primary">Comment</button>
+								</div>
+								<div class="row row-narrow"></div>
 							</div>
-							<div class="row row-narrow">
 
-							</div>
-							<div class="row row-narrow">
-								<button class="btn btn-success">Edit</button>
-								<button class="btn btn-primary">Comment</button>
-							</div>
-							<div class="row row-narrow">
+						</div>
+						<div class="col-md-4 col-md-offset-0">
+							<div class="col-md-11 col-md-offset-1 orange-light">
+								<div class="row row-narrow"></div>
+								<div class="row row-narrow fixed-size-short">
+									<img src="image\image0.jpg" class="img-rounded" width="200px">
 
+									<p>
+										Lorem ipsum dolor sit amet, consectetur adipiscing elit, velit esse cillum dolore eu fugiat
+										Lorem ipsum dolor sit amet, consectetur adipiscing elit, velit esse cillum dolore eu fugiat
+									</p>
+								</div>
+								<div class="row row-narrow">
+									<p>
+										<b>Author:</b> Tony
+									</p>
+									<p>
+										<b>Posted On: </b> <span class="postedTime"></span>
+									</p>
+								</div>
+								<div class="row row-narrow">
+									<button class="btn btn-success">Edit</button>
+									<button class="btn btn-primary">Comment</button>
+								</div>
+								<div class="row row-narrow"></div>
 							</div>
+
+						</div>
+						<div class="col-md-4 col-md-offset-0">
+							<div class="col-md-11 col-md-offset-1 orange-light">
+								<div class="row row-narrow"></div>
+								<div class="row row-narrow fixed-size-short">
+									<img src="image\image2.jpg" class="img-rounded" width="200px">
+
+									<p>
+										Lorem ipsum dolor sit amet, consectetur adipiscing elit, velit esse cillum dolore eu fugiat
+										Lorem ipsum dolor sit amet, consectetur adipiscing elit, velit esse cillum dolore eu fugiat
+									</p>
+								</div>
+								<div class="row row-narrow">
+									<p>
+										<b>Author:</b> Hulk
+									</p>
+									<p>
+										<b>Posted On: </b> <span class="postedTime"></span>
+									</p>
+								</div>
+								<div class="row row-narrow">
+									<button class="btn btn-success">Edit</button>
+									<button class="btn btn-primary">Comment</button>
+								</div>
+								<div class="row row-narrow"></div>
+							</div>
+
 						</div>
 
-						<div class="col-md-3 col-md-offset-1 orange-light">
-							<div class="row row-narrow">
-
-							</div>
-							<div class="row row-narrow fixed-size-short">
-								<img src="image\image1.jpg" class="img-rounded" width="150px">
-								<p>
-
-								</p>
-								<p>
-									Lorem ipsum dolor sit amet, consectetur adipiscing elit, velit esse cillum dolore eu fugiat
-									Lorem ipsum dolor sit amet, consectetur adipiscing elit, velit esse cillum dolore eu fugiat
-								</p>
-							</div>
-							<div class="row row-narrow">
-
-							</div>
-							<div class="row row-narrow">
-								<button class="btn btn-success">Edit</button>
-								<button class="btn btn-primary">Comment</button>
-							</div>
-							<div class="row row-narrow">
-
-							</div>
-						</div>
-
-						<div class="col-md-3 col-md-offset-1 orange-light">
-							<div class="row row-narrow">
-
-							</div>
-							<div class="row row-narrow fixed-size-short">
-								<img src="image\image2.jpg" class="img-rounded" width="150px">
-								<p>
-
-								</p>
-								<p>
-									Lorem ipsum dolor sit amet, consectetur adipiscing elit, velit esse cillum dolore eu fugiat
-									Lorem ipsum dolor sit amet, consectetur adipiscing elit, velit esse cillum dolore eu fugiat
-								</p>
-							</div>
-							<div class="row row-narrow">
-
-							</div>
-							<div class="row row-narrow">
-								<button class="btn btn-success">Edit</button>
-								<button class="btn btn-primary">Comment</button>
-							</div>
-							<div class="row row-narrow">
-
-							</div>
-						</div>
-					</div>
 				</div>
-
 				<div class="row row-medium">
-					<div class="col-md-11 col-md-offset-0">
-						<div class="col-md-3 col-md-offset-1 orange-light">
-							<div class="row row-narrow">
 
-							</div>
-							<div class="row row-narrow fixed-size-short">
-								<img src="image\image0.jpg" class="img-rounded" width="150px">
-								<p>
+						<div class="col-md-4 col-md-offset-0">
+							<div class="col-md-11 col-md-offset-1 orange-light">
+								<div class="row row-narrow"></div>
+								<div class="row row-narrow fixed-size-short">
+									<img src="image\image2.jpg" class="img-rounded" width="200px">
 
-								</p>
-								<p>
-									Lorem ipsum dolor sit amet, consectetur adipiscing elit, velit esse cillum dolore eu fugiat
-									Lorem ipsum dolor sit amet, consectetur adipiscing elit, velit esse cillum dolore eu fugiat
-								</p>
+									<p>
+										Lorem ipsum dolor sit amet, consectetur adipiscing elit, velit esse cillum dolore eu fugiat
+										Lorem ipsum dolor sit amet, consectetur adipiscing elit, velit esse cillum dolore eu fugiat
+									</p>
+								</div>
+								<div class="row row-narrow">
+									<p>
+										<b>Author:</b> Tony
+									</p>
+									<p>
+										<b>Posted On: </b> <span class="postedTime"></span>
+									</p>
+								</div>
+								<div class="row row-narrow">
+									<button class="btn btn-success">Edit</button>
+									<button class="btn btn-primary">Comment</button>
+								</div>
+								<div class="row row-narrow"></div>
 							</div>
-							<div class="row row-narrow">
 
-							</div>
-							<div class="row row-narrow">
-								<button class="btn btn-success">Edit</button>
-								<button class="btn btn-primary">Comment</button>
-							</div>
-							<div class="row row-narrow">
+						</div>
+						<div class="col-md-4 col-md-offset-0">
+							<div class="col-md-11 col-md-offset-1 orange-light">
+								<div class="row row-narrow"></div>
+								<div class="row row-narrow fixed-size-short">
+									<img src="image\image0.jpg" class="img-rounded" width="200px">
 
+									<p>
+										Lorem ipsum dolor sit amet, consectetur adipiscing elit, velit esse cillum dolore eu fugiat
+										Lorem ipsum dolor sit amet, consectetur adipiscing elit, velit esse cillum dolore eu fugiat
+									</p>
+								</div>
+								<div class="row row-narrow">
+									<p>
+										<b>Author:</b> Tony
+									</p>
+									<p>
+										<b>Posted On: </b> <span class="postedTime"></span>
+									</p>
+								</div>
+								<div class="row row-narrow">
+									<button class="btn btn-success">Edit</button>
+									<button class="btn btn-primary">Comment</button>
+								</div>
+								<div class="row row-narrow"></div>
 							</div>
+
+						</div>
+						<div class="col-md-4 col-md-offset-0">
+							<div class="col-md-11 col-md-offset-1 orange-light">
+								<div class="row row-narrow"></div>
+								<div class="row row-narrow fixed-size-short">
+									<img src="image\image1.jpg" class="img-rounded" width="200px">
+
+									<p>
+										Lorem ipsum dolor sit amet, consectetur adipiscing elit, velit esse cillum dolore eu fugiat
+										Lorem ipsum dolor sit amet, consectetur adipiscing elit, velit esse cillum dolore eu fugiat
+									</p>
+								</div>
+								<div class="row row-narrow">
+									<p>
+										<b>Author:</b> Thor
+									</p>
+									<p>
+										<b>Posted On: </b> <span class="postedTime"></span>
+									</p>
+								</div>
+								<div class="row row-narrow">
+									<button class="btn btn-success">Edit</button>
+									<button class="btn btn-primary">Comment</button>
+								</div>
+								<div class="row row-narrow"></div>
+							</div>
+
 						</div>
 
-						<div class="col-md-3 col-md-offset-1 orange-light">
-							<div class="row row-narrow">
-
-							</div>
-							<div class="row row-narrow fixed-size-short">
-								<img src="image\image1.jpg" class="img-rounded" width="150px">
-								<p>
-
-								</p>
-								<p>
-									Lorem ipsum dolor sit amet, consectetur adipiscing elit, velit esse cillum dolore eu fugiat
-									Lorem ipsum dolor sit amet, consectetur adipiscing elit, velit esse cillum dolore eu fugiat
-								</p>
-							</div>
-							<div class="row row-narrow">
-
-							</div>
-							<div class="row row-narrow">
-								<button class="btn btn-success">Edit</button>
-								<button class="btn btn-primary">Comment</button>
-							</div>
-							<div class="row row-narrow">
-
-							</div>
-						</div>
-
-						<div class="col-md-3 col-md-offset-1 orange-light">
-							<div class="row row-narrow">
-
-							</div>
-							<div class="row row-narrow fixed-size-short">
-								<img src="image\image2.jpg" class="img-rounded" width="150px">
-								<p>
-
-								</p>
-								<p>
-									Lorem ipsum dolor sit amet, consectetur adipiscing elit, velit esse cillum dolore eu fugiat
-									Lorem ipsum dolor sit amet, consectetur adipiscing elit, velit esse cillum dolore eu fugiat
-								</p>
-							</div>
-							<div class="row row-narrow">
-
-							</div>
-							<div class="row row-narrow">
-								<button class="btn btn-success">Edit</button>
-								<button class="btn btn-primary">Comment</button>
-							</div>
-							<div class="row row-narrow">
-
-							</div>
-						</div>
-					</div>
 				</div>
-
 				<div class="row row-medium">
-					<div class="col-md-11 col-md-offset-0">
-						<div class="col-md-3 col-md-offset-1 orange-light">
-							<div class="row row-narrow">
 
-							</div>
-							<div class="row row-narrow fixed-size-short">
-								<img src="image\image0.jpg" class="img-rounded" width="150px">
-								<p>
+						<div class="col-md-4 col-md-offset-0">
+							<div class="col-md-11 col-md-offset-1 orange-light">
+								<div class="row row-narrow"></div>
+								<div class="row row-narrow fixed-size-short">
+									<img src="image\image2.jpg" class="img-rounded" width="200px">
 
-								</p>
-								<p>
-									Lorem ipsum dolor sit amet, consectetur adipiscing elit, velit esse cillum dolore eu fugiat
-									Lorem ipsum dolor sit amet, consectetur adipiscing elit, velit esse cillum dolore eu fugiat
-								</p>
+									<p>
+										Lorem ipsum dolor sit amet, consectetur adipiscing elit, velit esse cillum dolore eu fugiat
+										Lorem ipsum dolor sit amet, consectetur adipiscing elit, velit esse cillum dolore eu fugiat
+									</p>
+								</div>
+								<div class="row row-narrow">
+									<p>
+										<b>Author:</b> Roger
+									</p>
+									<p>
+										<b>Posted On: </b> <span class="postedTime"></span>
+									</p>
+								</div>
+								<div class="row row-narrow">
+									<button class="btn btn-success">Edit</button>
+									<button class="btn btn-primary">Comment</button>
+								</div>
+								<div class="row row-narrow"></div>
 							</div>
-							<div class="row row-narrow">
 
-							</div>
-							<div class="row row-narrow">
-								<button class="btn btn-success">Edit</button>
-								<button class="btn btn-primary">Comment</button>
-							</div>
-							<div class="row row-narrow">
+						</div>
+						<div class="col-md-4 col-md-offset-0">
+							<div class="col-md-11 col-md-offset-1 orange-light">
+								<div class="row row-narrow"></div>
+								<div class="row row-narrow fixed-size-short">
+									<img src="image\image0.jpg" class="img-rounded" width="200px">
 
+									<p>
+										Lorem ipsum dolor sit amet, consectetur adipiscing elit, velit esse cillum dolore eu fugiat
+										Lorem ipsum dolor sit amet, consectetur adipiscing elit, velit esse cillum dolore eu fugiat
+									</p>
+								</div>
+								<div class="row row-narrow">
+									<p>
+										<b>Author:</b> Tony
+									</p>
+									<p>
+										<b>Posted On: </b> <span class="postedTime"></span>
+									</p>
+								</div>
+								<div class="row row-narrow">
+									<button class="btn btn-success">Edit</button>
+									<button class="btn btn-primary">Comment</button>
+								</div>
+								<div class="row row-narrow"></div>
 							</div>
+
+						</div>
+						<div class="col-md-4 col-md-offset-0">
+							<div class="col-md-11 col-md-offset-1 orange-light">
+								<div class="row row-narrow"></div>
+								<div class="row row-narrow fixed-size-short">
+									<img src="image\image0.jpg" class="img-rounded" width="200px">
+
+									<p>
+										Lorem ipsum dolor sit amet, consectetur adipiscing elit, velit esse cillum dolore eu fugiat
+										Lorem ipsum dolor sit amet, consectetur adipiscing elit, velit esse cillum dolore eu fugiat
+									</p>
+								</div>
+								<div class="row row-narrow">
+									<p>
+										<b>Author:</b> Tony
+									</p>
+									<p>
+										<b>Posted On: </b> <span class="postedTime"></span>
+									</p>
+								</div>
+								<div class="row row-narrow">
+									<button class="btn btn-success">Edit</button>
+									<button class="btn btn-primary">Comment</button>
+								</div>
+								<div class="row row-narrow"></div>
+							</div>
+
 						</div>
 
-						<div class="col-md-3 col-md-offset-1 orange-light">
-							<div class="row row-narrow">
-
-							</div>
-							<div class="row row-narrow fixed-size-short">
-								<img src="image\image1.jpg" class="img-rounded" width="150px">
-								<p>
-
-								</p>
-								<p>
-									Lorem ipsum dolor sit amet, consectetur adipiscing elit, velit esse cillum dolore eu fugiat
-									Lorem ipsum dolor sit amet, consectetur adipiscing elit, velit esse cillum dolore eu fugiat
-								</p>
-							</div>
-							<div class="row row-narrow">
-
-							</div>
-							<div class="row row-narrow">
-								<button class="btn btn-success">Edit</button>
-								<button class="btn btn-primary">Comment</button>
-							</div>
-							<div class="row row-narrow">
-
-							</div>
-						</div>
-
-						<div class="col-md-3 col-md-offset-1 orange-light">
-							<div class="row row-narrow">
-
-							</div>
-							<div class="row row-narrow fixed-size-short">
-								<img src="image\image2.jpg" class="img-rounded" width="150px">
-								<p>
-
-								</p>
-								<p>
-									Lorem ipsum dolor sit amet, consectetur adipiscing elit, velit esse cillum dolore eu fugiat
-									Lorem ipsum dolor sit amet, consectetur adipiscing elit, velit esse cillum dolore eu fugiat
-								</p>
-							</div>
-							<div class="row row-narrow">
-
-							</div>
-							<div class="row row-narrow">
-								<button class="btn btn-success">Edit</button>
-								<button class="btn btn-primary">Comment</button>
-							</div>
-							<div class="row row-narrow">
-
-							</div>
-						</div>
-					</div>
 				</div>
+
 			</div>
 		</div>
 
