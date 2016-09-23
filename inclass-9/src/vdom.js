@@ -62,6 +62,7 @@ function updateElement(parent, newNode, oldNode, index=0) {
     if (!oldNode) {
         parent.appendChild(createElement(newNode))
     } else {
+        console.log("the value of changed() is : " + changed(newNode,oldNode));
         parent.removeChild(parent.firstChild)
         parent.appendChild(createElement(newNode))
     }
