@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+	<meta charset="utf-8">
+	<title>Fisherman Game</title>
+	<link rel="stylesheet" href="style.css">
+	<script src="index.js"></script>
+    <meta name="author" content="Jing Guo">
+    <meta name="description" content="Fisherman game">
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+	<div class="main-container">
+		<div class="row-center well">
+			<h1>Fisherman Game</h1>
+		</div>
+		<div>
+			<hr class="hr-primary">
+		</div>
+
+		
+
+		<img src="image/net.png" class="image image-hidden" id="net" height="10" width="10" >
+
+		<div class="col-md-4">
+			<div class="col-md-12">
+					<div class="row-center">
+						<h3>Instruction</h3>
+					</div>
+					<div class="row"> 
+						<ul>
+							<li>Click "Start Game" to launch the game.</li>
+							<li>Click the mouse to cast a net.</li>
+							<li>The counter shows how much time left.</li>
+							<li>The score board indicated how much points you collect.</li>
+						</ul>
+					</div>
+			</div>
+
+			<div class="col-md-12">
+				<div class="row-center timer-box col-large-spacer">
+					<h4>Time left: <span id="timer">60</span> sec</h4>
+				</div>
+			</div>
+
+			<div class="col-md-12  col-large-spacer">
+				<div class="col-md-3 col-md-offset-1 medal-box" id="bronze-box">
+					<img src="image/bronze.png" id="bronze" width="70">
+					x <span id="bronze-num">0</span>
+				</div>
+				<div class="col-md-3 col-md-offset-1 medal-box" id="silver-box">
+					<img src="image/silver.png" id="silver" width="70">
+					x <span id="silver-num">0</span>
+				</div>
+				<div class="col-md-3 col-md-offset-1 medal-box" id="gold-box">
+					<img src="image/gold.png" id="gold" width="70">
+					x <span id="gold-num">0</span>
+				</div>
+			</div>
+		</div>
+
+		<div class="col-md-8">
+			<div class="col-md-1">
+			</div>
+			<div class="col-md-11">
+				<div class="col-md-2">
+					<img src="image/dory.png" class="image" id="dory" width="50">
+				</div>
+				<div class="col-md-2">
+					<img src="image/btfly.png" class="image" id="btfly" width="50">
+				</div>
+				<div class="col-md-2">
+					<img src="image/nemo.png" class="image" id="nemo"  width="50">
+				</div>
+				<div class="col-md-2">
+					<img src="image/shark.png" class="image" id="shark" width="50">
+				</div>
+				<div class="col-md-2">
+					<img src="image/yTang.png" class="image" id="yTang" width="50">
+				</div>
+				<div class="col-md-2">
+					<img src="image/turtle.png" class="image" id="turtle" width="50">
+				</div>
+			</div>
+
+			<div class="col-md-1 col-spacer">
+				<h4>Catch:</h4>
+			</div>
+			<div class="col-md-11 col-spacer">
+				<div class="col-md-2">
+					<h4><span id="dory-catch">0</span> </h4>
+				</div>
+				<div class="col-md-2">
+					<h4><span id="btfly-catch">0</span> </h4>
+				</div>
+				<div class="col-md-2">
+					<h4><span id="nemo-catch">0</span> </h4>
+				</div>
+				<div class="col-md-2">
+					<h4><span id="shark-catch">0</span> </h4>
+				</div>
+				<div class="col-md-2">
+					<h4><span id="yTang-catch">0</span> </h4>
+				</div>
+				<div class="col-md-2">
+					<h4><span id="turtle-catch">0</span> </h4>
+				</div>
+			</div>
+
+			<div class="col-md-1 col-spacer">
+				<h4>Target:</h4>
+			</div>
+			<div class="col-md-11 col-spacer">
+				<div class="col-md-2">
+					<h4><span id="dory-target">0</span> </h4>
+				</div>
+				<div class="col-md-2">
+					<h4><span id="btfly-target">0</span> </h4>
+				</div>
+				<div class="col-md-2">
+					<h4><span id="nemo-target">0</span> </h4>
+				</div>
+				<div class="col-md-2">
+					<h4><span id="shark-target">0</span> </h4>
+				</div>
+				<div class="col-md-2">
+					<h4><span id="yTang-target">0</span> </h4>
+				</div>
+				<div class="col-md-2">
+					<h4><span id="turtle-target">0</span> </h4>
+				</div>
+			</div>
+			<div class="col-md-12 col-spacer">
+				<div class="col-md-2">
+					<button class="btn btn-primary" id="launchBtn" onclick="launch()">Start Game</button>
+				</div>
+				<div class="col-md-2">
+					<button class="btn btn-danger" id="stopBtn" onclick="terminate()">Stop Game</button>
+				</div>
+				<div class="col-md-4">
+					<h5><span id="msg"></span></h5>
+				</div>
+			</div>
+			
+			<canvas class="well" width="700" height="350"></canvas>
+		</div>
+
+
+
+
+
+
+
+
+
+
+	</div>
+
+
+
+
+
+
+
+
+
+
+</body>

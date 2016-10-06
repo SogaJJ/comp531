@@ -1,0 +1,47 @@
+.main-container {
+	margin-bottom: 100px;
+	margin-top: 50px;
+	margin-left: 50px;
+	margin-right: 50px;
+}
+.row-center {
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+}
+
+.image {
+	display: inline;
+}
+
+.hr-primary {
+	border: black solid 0.5px;
+}
+
+.game-pnl {
+	border: solid black 1pt;
+	background-color: lavender;
+	border-radius: 20px;
+}
+
+.image-hidden {
+	display: none;
+}
+
+.col-spacer {
+	margin-top: 2px;
+	margin-bottom: 2px;
+}
+
+.col-large-spacer {
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+.medal-box {
+	display: none
+}
+
+.timer-box {
+	background-color: #ff6666
+}
