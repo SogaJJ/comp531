@@ -3,6 +3,7 @@ var fishTypeList = ["nemo", "nemo", "dory", "shark", "dory", "yTang","yTang",  "
 var gameTicker
 var app
 var timer
+var points = 0
 var launch = function() {
 	console.log('asdf')
 	var canvas = document.querySelector("canvas")
@@ -10,6 +11,7 @@ var launch = function() {
 	canvas.addEventListener("mousedown", app.cast, false)
 	app.start()
 	timer = setInterval(tickTimer, 1000)
+	points = 0
 }
 
 var tickTimer = function() {
@@ -72,6 +74,16 @@ var createApp = function(canvas) {
 				
 				nextfishes.push(fish)
 			} else {
+				if (fish.type == 'turtle') {
+					points = points + 5
+				} else if (fish.type == 'shark') {
+					points = points - 10
+				} else if (fish.type == 'btfly') {
+					points = points + 3
+				} else {
+					points = points + 1
+				}
+				document.getElementById('odometer').innerHTML = points
 				var num = parseInt(document.getElementById(fish.type+"-catch").innerHTML)
 				document.getElementById(fish.type+"-catch").innerHTML = num + 1				
 			}
