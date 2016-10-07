@@ -11,6 +11,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	<link rel="stylesheet" href="http://github.hubspot.com/odometer/themes/odometer-theme-slot-machine.css" />
+	<link rel="stylesheet" href="http://github.hubspot.com/odometer/themes/odometer-theme-car.css" />
 	<script src="http://github.hubspot.com/odometer/odometer.js"></script>
 </head>
 <body>
@@ -18,11 +19,10 @@
 		<div class="row-center well">
 			<h1>Fisherman Game</h1>
 		</div>
+
 		<div>
 			<hr class="hr-primary">
 		</div>
-
-		
 
 		<img src="image/net.png" class="image image-hidden" id="net" height="10" width="10" >
 
@@ -33,10 +33,14 @@
 					</div>
 					<div class="row"> 
 						<ul>
-							<li>Click "Start Game" to launch the game.</li>
-							<li>Click the mouse to cast a net.</li>
-							<li>The counter shows how much time left.</li>
-							<li>The score board indicated how much points you collect.</li>
+							<li>Click "Start Game" to launch the game. You have 60 second, but you can stop anytime you want.</li>
+							<li>Click the mouse to cast a net to catch fish.</li>
+							<li>You earn points by catching fishes. Catching a shark, you will lose 10 points. </li>
+							<li>Catch 3 fishes in one casting, you earn a bronze medal, giving you 10 points</li>
+							<li>Catch 4 fishes in one casting, you earn a silver medal, giving you 20 points</li>
+							<li>Catch 5 fishes in one casting, you earn a gold medal, giving you 30 points</li>
+							<li>You will need <span class="highlight">at least <span id="point-target">500</span> points</span>, and meet all fish catching tasks to <span class="highlight">WIN</span></li>
+							<li><span class="highlight">*** target points and fish number are randomly determined in the designed range</span></li>
 						</ul>
 					</div>
 			</div>
@@ -47,8 +51,13 @@
 				</div>
 			</div>
 
-			<div class="col-md-12">
-				<div class="odometer" id="odometer">0000</div>
+			<div class="col-md-12 col-large-spacer">
+				<div class="col-md-6">
+					<h4> Your Point</h4>
+				</div>
+				<div class="col-md-6">
+					<div class="odometer odometer-theme-slot-machine" id="odometer">0000</div>
+				</div>
 			</div>
 
 			<div class="col-md-12  col-large-spacer">
@@ -64,6 +73,10 @@
 					<img src="image/gold.png" id="gold" width="70">
 					x <span id="gold-num">0</span>
 				</div>
+			</div>
+
+			<div class="col-md-12  col-large-spacer">
+				<h2 class="winBox" id="winBox"></h2>
 			</div>
 		</div>
 
@@ -91,53 +104,64 @@
 				</div>
 			</div>
 
-			<div class="col-md-1 col-spacer">
-				<h4>Catch:</h4>
+			<div class="col-md-12"> 
+				<div class="col-md-1 col-spacer">
+					<h4>Catch:</h4>
+				</div>
+				<div class="col-md-11 col-spacer">
+					<div class="col-md-2">
+						<div class="odometer odometer-theme-car small-font" id="dory-catch-show">0</div>
+						<span class="fish-num-box" id="dory-catch">0</span>
+					</div>
+					<div class="col-md-2">
+						<div class="odometer odometer-theme-car small-font" id="btfly-catch-show">0</div>
+						<span class="fish-num-box"  id="btfly-catch">0</span>
+					</div>
+					<div class="col-md-2">
+						<div class="odometer odometer-theme-car small-font" id="nemo-catch-show">0</div>
+						<span class="fish-num-box"  id="nemo-catch">0</span> 
+					</div>
+					<div class="col-md-2">
+						<div class="odometer odometer-theme-car small-font" id="shark-catch-show">0</div>
+						<span class="fish-num-box"  id="shark-catch">0</span> 
+					</div>
+					<div class="col-md-2">
+						<div class="odometer odometer-theme-car small-font" id="yTang-catch-show">0</div>
+						<span class="fish-num-box"  id="yTang-catch">0</span> 
+					</div>
+					<div class="col-md-2">
+						<div class="odometer odometer-theme-car small-font" id="turtle-catch-show">0</div>
+						<span class="fish-num-box"  id="turtle-catch">0</span> 
+					</div>
+				</div>
 			</div>
-			<div class="col-md-11 col-spacer">
-				<div class="col-md-2">
-					<h4><span id="dory-catch">0</span> </h4>
+			
+			<div class="col-md-12">
+				<div class="col-md-1 col-spacer">
+					<h4>Target:</h4>
 				</div>
-				<div class="col-md-2">
-					<h4><span id="btfly-catch">0</span> </h4>
-				</div>
-				<div class="col-md-2">
-					<h4><span id="nemo-catch">0</span> </h4>
-				</div>
-				<div class="col-md-2">
-					<h4><span id="shark-catch">0</span> </h4>
-				</div>
-				<div class="col-md-2">
-					<h4><span id="yTang-catch">0</span> </h4>
-				</div>
-				<div class="col-md-2">
-					<h4><span id="turtle-catch">0</span> </h4>
+				<div class="col-md-11 col-spacer">
+					<div class="col-md-2">
+						<h4><span id="dory-target">30</span> </h4>
+					</div>
+					<div class="col-md-2">
+						<h4><span id="btfly-target">40</span> </h4>
+					</div>
+					<div class="col-md-2">
+						<h4><span id="nemo-target">30</span> </h4>
+					</div>
+					<div class="col-md-2">
+						<h4><span id="shark-target">10</span> </h4>
+					</div>
+					<div class="col-md-2">
+						<h4><span id="yTang-target">40</span> </h4>
+					</div>
+					<div class="col-md-2">
+						<h4><span id="turtle-target">18</span> </h4>
+					</div>
 				</div>
 			</div>
 
-			<div class="col-md-1 col-spacer">
-				<h4>Target:</h4>
-			</div>
-			<div class="col-md-11 col-spacer">
-				<div class="col-md-2">
-					<h4><span id="dory-target">0</span> </h4>
-				</div>
-				<div class="col-md-2">
-					<h4><span id="btfly-target">0</span> </h4>
-				</div>
-				<div class="col-md-2">
-					<h4><span id="nemo-target">0</span> </h4>
-				</div>
-				<div class="col-md-2">
-					<h4><span id="shark-target">0</span> </h4>
-				</div>
-				<div class="col-md-2">
-					<h4><span id="yTang-target">0</span> </h4>
-				</div>
-				<div class="col-md-2">
-					<h4><span id="turtle-target">0</span> </h4>
-				</div>
-			</div>
 			<div class="col-md-12 col-spacer">
 				<div class="col-md-2">
 					<button class="btn btn-primary" id="launchBtn" onclick="launch()">Start Game</button>
@@ -152,25 +176,5 @@
 			
 			<canvas class="well" width="700" height="350"></canvas>
 		</div>
-
-
-
-
-
-
-
-
-
-
 	</div>
-
-
-
-
-
-
-
-
-
-
 </body>

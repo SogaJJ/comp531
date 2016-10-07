@@ -36,6 +36,8 @@
 .col-large-spacer {
 	margin-top: 10px;
 	margin-bottom: 10px;
+	padding-top: 10px;
+	padding-bottom: 10px;
 }
 
 .medal-box {
@@ -48,4 +50,24 @@
 
 .odometer {
 	font-size: 30px;
+}
+
+.winBox {
+	display: none;
+	text-align: center;
+	color:red;
+}
+
+.small-font {
+	align-content: center;
+	text-align: center;
+	font-size: 16px;
+}
+
+.fish-num-box {
+	display: none;
+}
+
+.highlight {
+	color: red;
 }

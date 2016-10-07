@@ -1,11 +1,13 @@
 'use strict'
 var fishTypeList = ["nemo", "nemo", "dory", "shark", "dory", "yTang","yTang",  "turtle", "btfly", "btfly"]
+var medalType = ['bronze', 'silver', 'gold']
 var gameTicker
 var app
 var timer
 var points = 0
+var targetPoint = 500
 var launch = function() {
-	console.log('asdf')
+	reset()
 	var canvas = document.querySelector("canvas")
 	app = createApp(canvas)
 	canvas.addEventListener("mousedown", app.cast, false)
@@ -13,7 +15,27 @@ var launch = function() {
 	timer = setInterval(tickTimer, 1000)
 	points = 0
 }
-
+var reset = function() {
+	document.getElementById('winBox').style.display = 'none'
+	points = 0
+	document.getElementById('odometer').innerHTML = points
+	fishTypeList.forEach(function(fish){
+		document.getElementById(fish+"-catch").innerHTML = 0
+		document.getElementById(fish+"-catch-show").innerHTML = 0
+	})
+	medalType.forEach(function(medal){
+		document.getElementById(medal + "-num").innerHTML = 0
+		document.getElementById(medal + '-box').style.display = 'none'
+	})
+	var temporary = ["nemo", "dory", "yTang", "btfly"]
+	temporary.forEach(function(fish){
+		document.getElementById(fish + "-target").innerHTML = Math.floor((Math.random()+1) * 40)
+	})
+	document.getElementById("shark-target").innerHTML = Math.floor((Math.random()+1) * 5)
+	document.getElementById("turtle-target").innerHTML = Math.floor((Math.random()+1) * 10)
+	targetPoint = Math.floor((Math.random()+1) * 500)
+	document.getElementById('point-target').innerHTML = targetPoint
+}
 var tickTimer = function() {
 	var time = parseInt(document.getElementById('timer').innerHTML)
 	if (time == 1) {
@@ -25,10 +47,33 @@ var tickTimer = function() {
 	}
 }
 var terminate = function() {
-	app.stop();
+	app.stop()
 	clearInterval(timer)
 	document.getElementById('timer').innerHTML = 60
+	checkResult()
 }
+
+var checkResult = function() {
+	// check points
+	var result = 'win'
+	if (points < targetPoint) {
+		result = 'lose'
+	} 
+	fishTypeList.forEach(function(fish){
+		var num = parseInt(document.getElementById(fish+"-catch").innerHTML)
+		var target = parseInt(document.getElementById(fish+"-target").innerHTML)
+		if (num < target) {
+			result = 'lose'
+		}
+	})
+	if (result == 'win') {
+		document.getElementById('winBox').innerHTML = "You WIN! Play another round!"
+	} else {
+		document.getElementById('winBox').innerHTML = "You LOSE! Play another round!"
+	}
+	document.getElementById('winBox').style.display = 'inline'
+}
+
 var createApp = function(canvas) { 
 	
 	var c = canvas.getContext("2d")	
@@ -51,7 +96,6 @@ var createApp = function(canvas) {
 	}
 
 	var stop = function() {
-		console.log('stop clicked')
 		if (document.getElementById('launchBtn').disabled = true) {
 			clearInterval(gameTicker)
 			c.clearRect(0, 0, 700, 500)
@@ -85,14 +129,14 @@ var createApp = function(canvas) {
 				}
 				document.getElementById('odometer').innerHTML = points
 				var num = parseInt(document.getElementById(fish.type+"-catch").innerHTML)
-				document.getElementById(fish.type+"-catch").innerHTML = num + 1				
+				document.getElementById(fish.type+"-catch").innerHTML = num + 1	
+				document.getElementById(fish.type+"-catch-show").innerHTML = num + 1				
 			}
 
 		})
 		var numberOfFishCatch = fishes.length - nextfishes.length
 		document.getElementById('msg').innerHTML = 'catch ' + numberOfFishCatch + ' fishes'
 		
-		var medalType = ['bronze', 'silver', 'gold']
 		var medal
 		if (numberOfFishCatch >= 3) {
 			if (numberOfFishCatch > 5) {
@@ -100,7 +144,14 @@ var createApp = function(canvas) {
 			} else {
 				medal = medalType[numberOfFishCatch - 3]
 			}
-			console.log('should earn a' + medal)
+			if (medal == 'bronze') {
+				points = points + 10
+			} else if (medal == 'silver') {
+				points = points + 20
+			} else if (medal == 'gold') {
+				points = points + 30
+			}
+			document.getElementById('odometer').innerHTML = points
 			if (parseInt(document.getElementById(medal + '-num').innerHTML) == 0) {
 
 				document.getElementById(medal + '-box').style.display = 'inline'
