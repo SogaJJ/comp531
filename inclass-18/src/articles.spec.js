@@ -26,6 +26,9 @@ describe('Validate Article functionality', () => {
 		// add a new article
 		// verify you get the article back with an id
 		// verify the content of the article
+		// add a second article
+		// verify the article id increases by one
+		// verify the second artice has the correct content
 		let firstId
 		let secondId
 		fetch(url("/article"), {
@@ -46,21 +49,15 @@ describe('Validate Article functionality', () => {
 			expect(JSON.parse(body).id).to.exit
 			firstId = JSON.parse(body).id
 			expect(JSON.parse(body).text).to.eql("First added new article")
+			return 	fetch(url("/article"), {
+				method: "POST",
+				headers: {'Content-Type': 'application/json'},
+	    		body: JSON.stringify({
+	    			"author": "Jing",
+	        		"text": "Second added new article"
+	    		})
+	    	})
 		})
-
-		// add a second article
-		// verify the article id increases by one
-		// verify the second artice has the correct content
-		fetch(url("/article"), {
-			method: "POST",
-			headers: {
-      			'Content-Type': 'application/json'
-    		},
-    		body: JSON.stringify({
-    			"author": "Jing",
-        		"text": "Second added new article"
-    		})
-    	})
 		.then(res => {
 			expect(res.status).to.eql(200)	
 			return res.text()
