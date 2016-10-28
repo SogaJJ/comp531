@@ -7,7 +7,6 @@ const Headline = ({username, headline, avatar, updateHeadline}) => {
 	let newHeadline
 
 	const _updateHeadline = () => {
-		console.log('inside _updateHeadline')
 		if (newHeadline && newHeadline.value) {
 			updateHeadline(newHeadline.value)
 			newHeadline.value = ''			

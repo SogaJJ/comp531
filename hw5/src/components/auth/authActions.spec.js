@@ -5,7 +5,7 @@ import { expect } from 'chai'
 import Action from '../../actions'
 
 
-describe('Validate actions (these are functions that dispatch actions)', () => {
+describe('Validate auth actions ', () => {
 	let resource
 	let url
 	let login

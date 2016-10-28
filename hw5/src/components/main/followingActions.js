@@ -5,7 +5,6 @@ export function getFollowers() {
 		resource('GET','following/')
 		.then((response)=>{
 			const followers = response.following.reduce((object, item)=>{object[item] = {name: item}; return object},{})
-			console.log('followers: ', followers)
 			const followersStr = response.following.join(',')
 
 			const followersHeadline = resource('GET',`headlines/${followersStr}`)

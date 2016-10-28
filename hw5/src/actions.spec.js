@@ -5,7 +5,7 @@ import { expect } from 'chai'
 import Action, { nav2Main, nav2Landing, nav2Profile, updateError, updateSuccess, resource } from './actions'
 
 
-describe('Validate actions (these are functions that dispatch actions)', () => {
+describe('Validate actions ', () => {
 
 	let resource, url
 
@@ -49,7 +49,7 @@ describe('Validate actions (these are functions that dispatch actions)', () => {
 		.catch(done)
 	})
 
-	it(' resource should be POSTable', (done) => {
+	it('resource should be POSTable', (done) => {
 		mock(`${url}/test`, {
 			method: 'POST',
 			headers: {'Content-Type': 'application/json'},
@@ -64,7 +64,7 @@ describe('Validate actions (these are functions that dispatch actions)', () => {
 		.catch(done)
 	})
 
-	it(' should update error message (for displaying error mesage to user)', () => {
+	it('should update error message (for displaying error mesage to user)', () => {
 		let expectation = {
 			type: Action.ERR, 
 			msg: 'This is error message'
@@ -72,7 +72,7 @@ describe('Validate actions (these are functions that dispatch actions)', () => {
 		expect(updateError('This is error message')).to.eql(expectation);
 	})
 
-	it(' should update success message (for displaying success mesage to user)', () => {
+	it('should update success message (for displaying success mesage to user)', () => {
 		let expectation = {
 			type: Action.SUCCESS, 
 			msg: 'This is success message'

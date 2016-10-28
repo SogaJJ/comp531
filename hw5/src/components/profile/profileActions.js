@@ -10,11 +10,9 @@ export function getHeadline(username) {
 }
 
 export function updateHeadline(text) {
-	console.log('in updateHeadline function call:', text)
 	return (dispatch) => {
 		return resource('PUT', 'headline', {'headline': text})
 		.then((response) => {
-			console.log('before dispatch')
 			dispatch({type: Action.UPDATE_PROFILE, headline: response.headline})
 		})
 	}

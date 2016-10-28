@@ -5,7 +5,7 @@ import Reducer, {common, article, initCommonState, initProfileState, initFollowS
 import {processArticles} from './components/article/articlesView'
 import {filterKeyword} from './components/article/articleActions'
 
-describe('Validate reducer (no fetch requests here)', ()=> {
+describe('Validate Reducer', ()=> {
 
 	it('should initialize state', ()=>{
 		expect(Reducer(undefined,{})).to.eql({

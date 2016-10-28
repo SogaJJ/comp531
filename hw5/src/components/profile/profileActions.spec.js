@@ -3,7 +3,7 @@ import mockery from 'mockery'
 import fetch, {mock} from 'mock-fetch'
 
 
-describe('Validate Profile actions (mocked requests)', ()=> {
+describe('Validate profile actions', ()=> {
 	let Action, resource, url, profileActions
 	
 	beforeEach(() => {

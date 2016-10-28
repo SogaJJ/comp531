@@ -8,7 +8,7 @@ import ArticleView from './articlesView'
 
 import Reducer from '../../reducers'
 
-describe('ArticleView (component tests)', ()=> {
+describe('Validate ArticleView', ()=> {
 	
 	it('should render articles', ()=>{
 

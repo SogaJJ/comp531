@@ -6,7 +6,7 @@ import Action from '../../actions'
 
 let resource, getArticles, url, filterKeyword
 
-describe('Validate Article actions', () => {
+describe('Validate article ctions', () => {
 
     beforeEach(() => {
         if (mockery.enable) {
