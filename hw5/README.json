@@ -1,4 +1,4 @@
 {
-	'netID': 'jg37',
-	backend: 'https://panoramic-quill.surge.sh'
+	"netid": "jg37",
+	"frontend": "http://panoramic-quill.surge.sh"
 }
