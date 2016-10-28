@@ -1,0 +1,99 @@
+.navi_bar {
+	align-content: center;
+	margin-top: auto;
+	margin-bottom: auto;
+	vertical-align: middle;
+	padding-top: 20px;
+	padding-bottom: auto;
+}
+.btn {
+	
+}
+.post-field {
+	line-height: 20px;
+}
+
+.post-container {
+	margin-bottom: 20px;
+	height: 50px;
+}
+.comment-author-container {
+	background-color:#ffff99;
+	margin-top: 5px;
+}
+.comment-author {
+	font-weight: bold;
+}
+
+.comment-content {
+	background-color: #ffffcc;
+}
+
+.article-container {
+	border-radius: 5px;
+	background-color: #f4fef4;
+}
+
+.article-author-container {
+	padding-top: 20px;
+	margin-top:20px;
+	background-color: #d5fdd5;
+}
+
+.article-author  {
+	font-weight: bold;
+}
+
+.article-date {
+	font-style: italic;
+	text-decoration: underline;
+}
+
+
+.landing-error-msg {
+	font-style: italic;
+	color: black;
+	background-color: #ffcccc;
+}
+
+.hr-primary {
+	border: black solid 0.5px;
+}
+
+.follower-img {
+	width: 100px;
+}
+
+.center-container {
+	margin-left: auto;
+	margin-right: auto;
+	align-content: center;
+	padding-left: auto;
+	padding-right: auto;
+}
+
+.landing-header {
+	color: white;
+	padding-bottom: 5px;
+	border-radius: 10px;
+	text-align: center;
+	align-content: center;
+	background-color: #0f52ba;
+	margin-top: 30px;
+	margin-bottom: 30px;
+}
+
+.main-header {
+	color: white;
+	padding-bottom: 5px;
+	border-radius: 10px;
+	text-align: center;
+	align-content: center;
+	background-color: #0f52ba;
+	margin-top: 1px;
+	margin-bottom: 1px;
+}
+
+tr.spaced-row > td{
+	padding-top: 20px;
+}
