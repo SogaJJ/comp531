@@ -1,12 +1,13 @@
 import { combineReducers } from 'redux'
 import Action from './actions'
 
-const common = (state = {
+export const initCommonState = {
 	location: 'LANDING',
 	errMsg: '',
 	updateMsg: ''
-	}, action) => {
-	
+	}
+
+export const common = (state = initCommonState, action) => {
 	switch(action.type) {
 		case Action.NAV2MAIN : 
 			return {
@@ -28,6 +29,11 @@ const common = (state = {
 				...state, 
 				errMsg: action.msg
 			}
+		case Action.SUCCESS :
+			return {
+				...state, 
+				updateMsg: action.msg
+			}
 		case Action.LOGOUT:
 			return {
 				...state,
@@ -38,14 +44,9 @@ const common = (state = {
 	}
 }
 
+export const initArticleState = {articles: {}, keyword: ''}
 
-const articles = (state, action) => {
-	switch(action.type) {
-
-	}
-}
-
-const article = (state = {articles: {}, keyword: ''}, action) => {
+export const article = (state = initArticleState, action) => {
 	switch(action.type) {
 		case Action.UPDATE_ARTICLES :
 			return {
@@ -62,7 +63,9 @@ const article = (state = {articles: {}, keyword: ''}, action) => {
 	}
 }
 
-const follow = (state = {followers:{}}, action) => {
+export const initFollowState = {followers:{}}
+
+export const follow = (state = initFollowState, action) => {
 	switch(action.type) {
 		case Action.UPDATE_FOLLOWER:
 			return {
@@ -74,14 +77,16 @@ const follow = (state = {followers:{}}, action) => {
 	}
 }
 
-const profile = (state = 
-	{username: '', 
+
+export const initProfileState = {
+	username: '', 
 	email: '', 
 	zipcode: '', 
 	password: '', 
 	headline: '', 
-	avatar: ''}, 
-	action) => {
+	avatar: ''}
+
+export const profile = (state = initProfileState,  action) => {
 	switch(action.type) {
 		case Action.LOGIN :
 			return {

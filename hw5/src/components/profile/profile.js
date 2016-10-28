@@ -19,24 +19,19 @@ const Profile = ({avatar, headline, email, zipcode, username}) => {
 					<img src={avatar} />
 				</div>		
 				<div className="col-md-8"> 
-					<table className="table table-hover">
-						<tr>
-							<td>Username: </td>
-							<td>{username}</td>
-						</tr>
-						<tr>
-							<td>Email: </td>
-							<td>{email}</td>
-						</tr>
-						<tr>
-							<td>Zipcode: </td>
-							<td>{zipcode}</td>
-						</tr>
-						<tr>
-							<td>Headline: </td>
-							<td>{headline}</td>
-						</tr>
-					</table>
+					<div className="row info">
+						Username:       {username}
+					</div>
+					<div className="row info">
+						Email: {email}
+					</div>
+					<div className="row info">
+						Zipcode: {zipcode}
+					</div>
+					<div className="row info">
+						Headline: {headline}
+					</div>
+					
 
 					<button className="btn btn-primary"> Update </button>
 				</div>	

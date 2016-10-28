@@ -3,7 +3,10 @@ import { connect } from 'react-redux'
 import Article from './article'
 import {filterKeyword} from './articleActions'
 
-const processArticles = ( {originArticles, keyword }) => {
+export function processArticles (articles, keyword ) {
+	
+	let originArticles = Object.keys(articles).sort().map(_id => articles[_id])
+
 	let filteredArticles
 	if (keyword === '') {
 		filteredArticles = originArticles
@@ -20,17 +23,15 @@ const processArticles = ( {originArticles, keyword }) => {
 }
 
 
-const ArticleView = ({ articles, keyword, filterKeyword }) => {
+const ArticleView = ({ articles, filterKeyword }) => {
 	let keywordInput = ''
 
-	let originArticles = Object.keys(articles).sort().map((_id) => articles[_id])
-
-	let processededArticles = processArticles({originArticles, keyword})
 
 
 	const _filterKeyword = () => {
 		filterKeyword(keywordInput.value)
 	}
+	
 	return (
 		<div>
 
@@ -50,7 +51,7 @@ const ArticleView = ({ articles, keyword, filterKeyword }) => {
 
 
 			<div>			
-				{processededArticles.map((articleObj) => 
+				{articles.map((articleObj) => 
 						<Article key = {articleObj._id}
 								 author = {articleObj.author}
 								 date = {new Date(articleObj.date).toDateString()}
@@ -68,8 +69,7 @@ const ArticleView = ({ articles, keyword, filterKeyword }) => {
 export default connect(
 	(state) => {
 		return {
-			articles: state.article.articles,
-			keyword: state.article.keyword
+			articles: processArticles( state.article.articles,state.article.keyword)
 		}
 	},
 	(dispatch) => {

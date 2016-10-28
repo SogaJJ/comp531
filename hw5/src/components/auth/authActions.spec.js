@@ -20,6 +20,7 @@ describe('Validate actions (these are functions that dispatch actions)', () => {
   			url = require('../../actions').url
   			login = require('./authActions').login
   			logout = require('./authActions').logout
+
   		}
 	})
 
@@ -41,35 +42,23 @@ describe('Validate actions (these are functions that dispatch actions)', () => {
             json: {username, result:'success'}
         })
      
-        login(username, password)((action)=>{              
-            expect(action.type).to.eql(Action.LOGIN)
-            done()
+        let count = 0;
+        login(username,password)((action) => {
+            try {
+                if(action.type===Action.LOGIN) {
+                    expect(action.username).to.eql(username);
+                }
+                count++;
+            } catch (e) {
+                done(e)
             }
-        )	
-    })
-
-
-
-	it('Test Auth: should not log in an invalid user', (done) => {
-
-        const username = "jg37test"
-        const password = "aksjldf"
-
-        mock(`${url}/login`, {
-            method: 'POST',
-            headers: {'Content-Type': 'application/json'},
-            json: {username, result:'success'}
         })
-     
-        login(username, password)((action)=>{              
-            expect(action.type).to.eql(Action.ERR)
-            done()
-            }
-        )		
-
-	})
-
-
+        .then(() => {
+            expect(count).to.eql(2)
+        })
+        .then(done)
+        .catch(done)
+    })
 
     it('should log out a user (state should be cleared)', (done)=>{
 
@@ -88,6 +77,24 @@ describe('Validate actions (these are functions that dispatch actions)', () => {
         
     })
 
+	it('Test Auth: should not log in an invalid user', (done) => {
+
+        const username = "jg37test"
+        const password = "aksjldf"
+
+        mock(`${url}/login`, {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            json: {username, result:'success'}
+        })
+     
+        login(username, password)((action)=>{              
+            expect(action.type).to.eql(Action.ERR);
+        })	
+        .then(done)
+        .catch(done)
+
+	})
 })
 
 

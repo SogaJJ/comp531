@@ -16,26 +16,14 @@ const Login = ({login}) => {
 	return (
 		<div>
 			<h3> Login</h3>
-			<table className="table table-hover">
-				<tr className="spaced-row">
-					<td>
-						Account:
-					</td>
-					<td>
-						<input type='text' ref={ (node) => { username = node }}></input>
-					</td>
-				</tr>
-				<tr  className="spaced-row">
-					<td>
-						Password:
-					</td>
-					<td>
-						<input type='password' ref={(node) => { password = node }}></input>
-					</td>
-				</tr>
-			</table>
-			jg37test
-			length-butter-fierce	
+			<div className="row input-field">
+				Account: <input type='text' ref={ (node) => { username = node }}></input>
+			</div>	
+			<div className="row input-field">
+				Password:<input type='password' ref={(node) => { password = node }}></input>
+
+			</div>
+	
 			<div className='col-md-12'>	
 			<button className='btn btn-primary' onClick={_login}> login </button>
 			</div>

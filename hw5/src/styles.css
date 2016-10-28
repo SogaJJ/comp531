@@ -13,6 +13,15 @@
 	line-height: 20px;
 }
 
+.input-field {
+	margin-top: 20px;
+	margin-top: 10px;
+	margin-left: 10px;
+}
+
+.info {
+	padding: 10px;
+}
 .post-container {
 	margin-bottom: 20px;
 	height: 50px;

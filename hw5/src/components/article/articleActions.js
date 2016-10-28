@@ -18,7 +18,7 @@ export function getArticles() {
 }
 
 export function filterKeyword(keyword) {
-	console.log('dispatching filterKeyword()')
+	
 	return {
 		type: Action.UPDATE_KEYWORD,
 		keyword: keyword
