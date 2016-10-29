@@ -15,14 +15,33 @@ const Login = ({login}) => {
 
 	return (
 		<div>
-			<h3> Login</h3>
-			<div className="row input-field">
-				Account: <input type='text' ref={ (node) => { username = node }}></input>
-			</div>	
-			<div className="row input-field">
-				Password:<input type='password' ref={(node) => { password = node }}></input>
-
+			<div className="register-login-title">
+				<h3>
+					Login
+				</h3>
+				<hr className="hr-primary" />
 			</div>
+
+			<div className="row register-input-row">
+				<div className="col-md-4">
+					Account: 
+				</div>
+				<div className="col-md-8">
+					<input type='text' ref={ (node) => { username = node }}></input>
+				</div>
+			</div>
+
+			<div className="row register-input-row">
+				<div className="col-md-4">
+					Password: 
+				</div>
+				<div className="col-md-8">
+					<input type='password' ref={(node) => { password = node }}></input>
+				</div>
+			</div>
+
+
+
 	
 			<div className='col-md-12'>	
 			<button className='btn btn-primary' onClick={_login}> login </button>

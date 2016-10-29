@@ -37,6 +37,10 @@ const Landing = ({ errorMsg }) => {
 				
 			</div>
 
+			<div className="footer">
+					&copy; Jing Guo, 2016
+			</div>
+
 		</div>
 	)
 }

@@ -20,9 +20,17 @@ const Article = ({ author, date, text, comments, displayComments}) => {
 		<div>
 			
 				<div className="col-md-12 article-author-container">
-					<h5>
-						<span className="article-author">{author}</span> said on <span className="article-date">{date} </span>
-					</h5>
+					<div className="col-md-6">
+						<h5>
+							<span className="article-author">{author}</span> said on <span className="article-date">{date} </span>
+						</h5>
+					</div>
+					<div className="col-md-3">
+						<button className="btn btn-warning"> Show Comment </button>
+					</div>
+					<div className="col-md-3">
+						<button className="btn btn-success"> Add Comment </button>
+					</div>
 				</div>
 
 
@@ -30,9 +38,9 @@ const Article = ({ author, date, text, comments, displayComments}) => {
 					{text}
 				</div>
 
-				<div className="col-md-12"> 
-					<button className="btn btn-warning"> Show Comment </button>
-				</div>
+				
+
+				
 
 				<div className="col-md-12"> 
 					<div className="col-md-11 col-md-offset-1"> 
