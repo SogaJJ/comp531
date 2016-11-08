@@ -15,7 +15,7 @@ const Headline = ({username, headline, avatar, updateHeadline}) => {
 	return (
 		<div>
 			<div className="col-md-12">
-				<img src={avatar} />
+				<img src={avatar} className="main-avatar"/>
 			</div>
 
 			<div className="col-md-12">

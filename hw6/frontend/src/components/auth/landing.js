@@ -4,7 +4,7 @@ import NaviBar from '../main/nav'
 import Login from './login'
 import Register from './register'
 
-const Landing = ({ errorMsg }) => {
+const Landing = ({ errorMsg, updateMsg }) => {
 	return (
 		<div className="profile_page_container">
 			<div className="row">
@@ -31,10 +31,11 @@ const Landing = ({ errorMsg }) => {
 			</div>
 
 			<div className="row">
-				<div className="col-md-4 col-md-offset-1"> 
-					<h4 className="landing-error-msg">{errorMsg}</h4>
-				</div>
-				
+				<h4 className="landing-error-msg">{errorMsg}</h4>
+			</div>
+
+			<div className="row">
+				<h4 className="landing-success-msg">{updateMsg}</h4>
 			</div>
 
 			<div className="footer">
@@ -47,6 +48,7 @@ const Landing = ({ errorMsg }) => {
 
 export default connect((state) => {
 	return {
-		errorMsg: state.common.errMsg
+		errorMsg: state.common.errMsg,
+		updateMsg: state.common.updateMsg
 	}
 }, )(Landing)

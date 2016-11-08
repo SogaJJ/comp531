@@ -18,6 +18,38 @@
 .btn {
 	
 }
+
+.profile-message-wrong {
+	margin-top: 10px;
+	margin-bottom: 10px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	background-color: #ffb2b2;
+	text-align: center;
+}
+
+.profile-message-right {
+	margin-top: 10px;
+	margin-bottom: 10px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	background-color: #b5ffb2;
+	text-align: center;
+}
+
+.main-avatar {
+	width: 300px;
+}
+.profile-avatar {
+	width: 300px;
+}
+.space-row {
+	margin-top: 10px;
+	margin-bottom: 10px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+
 .textarea {
 	height: 50px;
 	width: auto;
@@ -74,6 +106,15 @@
 	background-color:#ffff99;
 	margin-top: 5px;
 }
+
+.comment-update-container {
+	margin-top: 5px;
+}
+
+.not-show-comment-edit {
+	display: none;
+}
+
 .comment-author {
 	font-weight: bold;
 }
@@ -115,9 +156,17 @@
 
 
 .landing-error-msg {
+	text-align: center;
 	font-style: italic;
 	color: black;
 	background-color: #ffcccc;
+}
+
+.landing-success-msg {
+	text-align: center;
+	font-style: italic;
+	color: black;
+	background-color: #b5ffb2;
 }
 
 .hr-primary {

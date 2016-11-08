@@ -1,22 +1,11 @@
 import React, { PropTypes } from 'react'
 import { connect } from 'react-redux'
-import { toggleComment, beginComment, cancelComment, postComment } from './articleActions'
-
-const Comment = ({it}) => {
-	return (
-		<div>
-			<div className="col-md-12 comment-author-container"> 
-				<span className="comment-author">{it.author}</span> comments on <span className="comment-date">{it.date} </span>
-			</div>
-			<div className="col-md-12 comment-content"> 
-				<span className="comment-content">{it.text}</span>
-			</div>
-		</div>
-	)
-}
+import { toggleComment, beginComment, cancelComment, postComment, editPost } from './articleActions'
+import Comment from './comment'
 
 
-const Article = ({ username, id, author, date, text, comments, img, hideComments, toggleComment, addCommentStatus, beginComment, cancelComment, postComment}) => {
+
+const Article = ({ username, id, author, date, text, comments, img, hideComments, toggleComment, addCommentStatus, beginComment, cancelComment, postComment, editPost}) => {
 	
 	let hasImg = (img !== undefined) && (img !== null)
 
@@ -36,7 +25,12 @@ const Article = ({ username, id, author, date, text, comments, img, hideComments
 		}
 	}
 
-	
+	const _editPost = () => {
+		if (ongoingPost && ongoingPost.value) {
+			editPost(ongoingPost.value)
+			ongoingPost.value = ''
+		}
+	}
 
 	return (
 		<div>
@@ -56,15 +50,13 @@ const Article = ({ username, id, author, date, text, comments, img, hideComments
 				</div>
 				
 				<div className="col-md-12">
-					<div className="col-md-4">
+					<div className="col-md-6">
 						<button className="btn btn-warning" onClick={toggleComment}> {hideComments ? "Show" : "Hide"} Comment ( {comments.length} )</button>
 					</div>
-					<div className="col-md-4">
-						<button className="btn btn-success" onClick={beginComment} disabled={addCommentStatus ? true : false}> Add Comemnt</button>
+					<div className="col-md-6">
+						<button className="btn btn-success" onClick={beginComment} disabled={addCommentStatus ? true : false}> Edit</button>
 					</div>
-					<div className="col-md-4">
-						<button className="btn btn-primary" disabled={editable ? false : true}> Edit Post</button>
-					</div>	
+	
 				</div>
 
 				<div className= {addCommentStatus ? "col-md-12" : "add-comment-container-not-shown"} >
@@ -77,7 +69,10 @@ const Article = ({ username, id, author, date, text, comments, img, hideComments
 								<button className="btn btn-success" onClick={_postComment}> post comment</button>
 							</div>
 							<div className="row">
-								<button className="btn btn-danger" onClick={_cancelComment}> cancel comment</button>
+								<button className="btn btn-danger" onClick={_cancelComment}> cancel edit</button>
+							</div>
+							<div className="row">
+								<button className="btn btn-primary" onClick={_editPost} disabled={editable ? false : true}> edit post</button>
 							</div>
 						</div>
 					</div>
@@ -90,7 +85,7 @@ const Article = ({ username, id, author, date, text, comments, img, hideComments
 				<div className={hideComments ? "not-show-comment" : "col-md-12"}> 
 					<div className="col-md-11 col-md-offset-1"> 
 						{comments.map((it) => 
-							<Comment key={it.commentId} it={it} />
+							<Comment key={it.commentId} author={it.author} date={it.date} commentId={it.commentId} text={it.text} articleId={id} />
 						)}
 					</div>
 				</div>	
@@ -123,6 +118,7 @@ export default connect(
 			toggleComment: () => dispatch(toggleComment(ownProps.id)),
 			beginComment: () => dispatch(beginComment(ownProps.id)),
 			cancelComment: () => dispatch(cancelComment(ownProps.id)),
-			postComment: (text) => dispatch(postComment(ownProps.id, text))
+			postComment: (text) => dispatch(postComment(ownProps.id, text)),
+			editPost: (text) => dispatch(editPost(ownProps.id, text))
 		}
 	})(Article)

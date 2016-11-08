@@ -1,8 +1,72 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import NaviBar from '../main/nav'
+import { updateAvatar, updateEmail, updateZipcode, updatePwd } from './profileActions'
 
-const Profile = ({avatar, headline, email, zipcode, username}) => {
+const Profile = ({avatar, headline, email, zipcode, username, updateAvatar, updateEmail, updateZipcode,updatePwd}) => {
+
+	let fd = new FormData()
+	let emailField
+	let zipcodeField
+	let pwdField
+	let pwdCfmField
+	let profileMsg
+
+
+	const _updateAvatar = () => {
+		updateAvatar(username, fd)
+	}
+
+	const handleImageChange = (e) => {
+		fd.append('image', e.target.files[0]);
+	}
+
+	const showMsg = (msg, correctMsg) => {
+        profileMsg.innerText = msg
+        profileMsg.className = correctMsg ? "col-md-10 profile-message-right" : "col-md-10 profile-message-wrong"
+
+	}
+
+	const _updateProfile = () => {
+		let msg = ''
+		let correctMsg = true
+		if (emailField && emailField.value) {
+			if (emailField.value != "" && !/^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$/.test(emailField.value)) {
+		        msg = msg + 'invalid email address \n'
+		        correctMsg = correctMsg && false
+		    } else {
+		    	updateEmail(emailField.value)
+		    	msg = msg + 'udpate email address \n'
+		    }
+		    emailField.value = ''
+		}
+
+		if (zipcodeField && zipcodeField.value) {
+			if (zipcodeField.value != "" && !/^[0-9]{5}$/.test(zipcodeField.value)) {
+		        msg = msg + 'invalid zipcode \n'
+		        correctMsg = correctMsg && false
+			} else {
+				updateZipcode(zipcodeField.value)
+				msg = msg + 'udpate zipcode \n'
+			}
+			zipcodeField.value = ''
+		}
+		
+		if (pwdField && pwdField.value || (pwdCfmField && pwdCfmField.value)) {
+			if (pwdField.value !== pwdCfmField.value) {
+		        msg = msg + 'password not match \n'
+		        correctMsg = correctMsg && false
+			} else {
+				updatePwd(pwdField.value)
+				msg = msg + 'udpate password \n'
+			}
+			pwdField.value = ''
+			pwdCfmField.value = ''
+		}
+		showMsg(msg, correctMsg)
+	}
+
+
 	return (
 		<div>
 			<div className="row">
@@ -24,7 +88,18 @@ const Profile = ({avatar, headline, email, zipcode, username}) => {
 			<div className="col-md-12"> 
 				<div className="col-md-4"> 
 					<div className="col-md-8 col-md-offset-2">
-						<img src={avatar} />
+						<div className="row">
+							<img src={avatar} className="profile-avatar"/>
+						</div>
+						
+						<div className="row space-row">
+							<input type="file" accept="image/*" onChange={(e) => handleImageChange(e)} />
+						</div>
+
+						<div className="row space-row">
+							<button className="btn btn-success" onClick={_updateAvatar}> update avatar </button>
+						</div>
+						
 					</div>
 					
 				</div>		
@@ -59,7 +134,7 @@ const Profile = ({avatar, headline, email, zipcode, username}) => {
 								{email}
 							</div>
 							<div className="col-md-7">
-								<input type="text" size = {30} placeholder="update your email" />
+								<input type="text" size = {30} ref={ (node) => { emailField = node }} placeholder="update your email" />
 							</div>		     
 						</div>
 						<div className="row info">
@@ -70,25 +145,35 @@ const Profile = ({avatar, headline, email, zipcode, username}) => {
 								{zipcode}
 							</div>
 							<div className="col-md-7">
-								<input type="text" size = {30} placeholder="update your zipcode" />
+								<input type="text" size = {30} ref={ (node) => { zipcodeField = node }} placeholder="update your zipcode" />
 							</div>		     
 						</div>
 						<div className="row info">
 							<div className="col-md-2">
-								Headline:
+								
 							</div>
 							<div className="col-md-3">
-								{headline}
+								
 							</div>
 							<div className="col-md-7">
-								<input type="text" size = {30} placeholder="update your headline" />
+								<input type="password" size = {30} ref={ (node) => { pwdField = node }} placeholder="Password" />
 							</div>		     
 						</div>
-						
+						<div className="row info">
+							<div className="col-md-2">
+								
+							</div>
+							<div className="col-md-3">
+								
+							</div>
+							<div className="col-md-7">
+								<input type="password" size = {30} ref={ (node) => { pwdCfmField = node }} placeholder="Confirm Password" />
+							</div>		     
+						</div>
 						<div className="row info">
 							<div className="col-md-5"></div>
 							<div className="col-md-2">
-								<button className="btn btn-primary"> Update </button>
+								<button className="btn btn-primary" onClick={_updateProfile}> Update </button>
 							</div>
 							<div className="col-md-2">
 								<button className="btn btn-danger"> Clear </button>
@@ -99,6 +184,10 @@ const Profile = ({avatar, headline, email, zipcode, username}) => {
 						
 					</div>
 					
+
+					<div className="col-md-10" ref={ (node) => { profileMsg = node }} >
+						
+					</div>
 				</div>	
 			</div>
 
@@ -119,6 +208,9 @@ export default connect(
 	}, 
 	(dispatch) => {
 		return {
-			updateAvatar: () => dispatch(),
+			updateAvatar: (username, fd) => dispatch(updateAvatar(username, fd)),
+			updateEmail: (email) => dispatch(updateEmail(email)),
+			updateZipcode: (zipcode) => dispatch(updateZipcode(zipcode)),
+			updatePwd: (pwd) => dispatch(updatePwd(pwd))
 		}
 	})(Profile)

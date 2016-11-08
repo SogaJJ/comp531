@@ -1,7 +1,38 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import { register } from './authActions'
+import { updateError } from '../../actions'
 
-const Register = () => {
+
+
+const Register = ({register, sendErr}) => {
+
+	let username
+	let email
+	let dob
+	let zipcode
+	let password
+	let passwordConfirm
+
+	const _submit = (e) => {
+		e.preventDefault();
+		if (password.value !== passwordConfirm.value) {
+			sendErr('password not match')
+			password.value = ''
+			passwordConfirm.value = ''
+		} else {
+			register(username.value, email.value, dob.value, zipcode.value, password.value)
+			username.value = ''
+			email.value = ''
+			dob.value = ''
+			zipcode.value = ''
+			password.value = ''
+			passwordConfirm.value = ''
+		}
+		
+	}
+
+
 	return (
 		<div>
 			<div className="register-login-title">
@@ -10,13 +41,13 @@ const Register = () => {
 				</h3>
 				<hr className="hr-primary" />
 			</div>
-			<form className="register-form">
+			<form className="register-form" onSubmit={(e) => _submit(e)}>
 				<div className="row register-input-row">
 					<div className="col-md-4">
-						Account: 
+						Username: 
 					</div>
 					<div className="col-md-8">
-						<input type="text" name="test" size="30" placeholder="account Name">
+						<input type="text" value="aa" name="test" size="30" placeholder="Username" ref={ (node) => { username = node }} >
 						</input>
 					</div>
 				</div>
@@ -25,7 +56,7 @@ const Register = () => {
 						Email: 
 					</div>
 					<div className="col-md-8">
-						<input type="text" name="test" size="30" placeholder="email Address">
+						<input type="text" value="aa@aa.com" name="test" size="30" placeholder="email Address" ref={ (node) => { email = node }} pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" >
 						</input>
 					</div>
 				</div>
@@ -34,16 +65,7 @@ const Register = () => {
 						Date of Birth: 
 					</div>
 					<div className="col-md-8">
-						<input type="text" name="test" size="30" placeholder="your date of birth">
-						</input>
-					</div>
-				</div>
-				<div className="row register-input-row">
-					<div className="col-md-4">
-						Phone: 
-					</div>
-					<div className="col-md-8">
-						<input type="text" name="test" size="30" placeholder="phone number">
+						<input type="text" value="11-11-1111" name="test" size="30" placeholder="mm-dd-yyyy" ref={ (node) => { dob = node }} pattern="^\d{1,2}-\d{1,2}-\d{4}$" >
 						</input>
 					</div>
 				</div>
@@ -52,9 +74,27 @@ const Register = () => {
 						Zipcode: 
 					</div>
 					<div className="col-md-8">
-						<input type="text" name="test" size="30" placeholder="zipcode">
+						<input type="text" value="12345" name="test" size="30" placeholder="zipcode" ref={ (node) => { zipcode = node }} pattern="[0-9]{5}" >
 						</input>
 					</div>
+				</div>
+				<div className="row register-input-row">
+					<div className="col-md-4">
+						Password: 
+					</div>
+					<div className="col-md-8">
+						<input type="password" name="password" size="30" ref={ (node) => { password = node }} placeholder="passwprd" required>
+						</input>
+					</div>					
+				</div>
+				<div className="row register-input-row">
+					<div className="col-md-4">
+						Confirm Pwd: 
+					</div>
+					<div className="col-md-8">
+						<input type="password" name="passwordConfirm" size="30" ref={ (node) => { passwordConfirm = node }} placeholder="confirm passwprd" required>
+						</input>
+					</div>					
 				</div>
 				<div className="row register-input-row">
 				</div>
@@ -68,12 +108,6 @@ const Register = () => {
 				</div>
 				
 			</form>
-
-
-
-
-
-
 		</div>
 
 	)
@@ -81,4 +115,13 @@ const Register = () => {
 
 }
 
-export default connect()(Register)
+export default connect(
+	null,
+	(dispatch) => {
+		return {
+			register: (username, email, dob, zipcode, password) => dispatch(register(username, email, dob, zipcode, password)),
+			sendErr: (errorMsg) => dispatch(updateError(errorMsg)),
+		}
+	}
+
+	)(Register)

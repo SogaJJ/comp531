@@ -1,6 +1,6 @@
 import Promise from 'bluebird'
 
-import Action, { nav2Landing, nav2Main, updateError, resource } from '../../actions'
+import Action, { nav2Landing, nav2Main, updateError, resource, updateSuccess } from '../../actions'
 import { getProfile, getHeadline} from '../profile/profileActions'
 import {getFollowers} from '../main/followingActions'
 import { getArticles } from '../article/articleActions'
@@ -49,6 +49,19 @@ export function logout() {
 		})
 		.then((response) => {
 			dispatch(nav2Landing())
+		})
+	}
+}
+
+export function register(username, email, dob, zipcode, password) {
+	return (dispatch) => {
+		resource('POST', 'register', {username, email, dob, zipcode, password})
+		.then(response => {
+			console.log(response)
+			dispatch(updateSuccess('You successfully registered!'))
+		})
+		.catch(err => {
+			console.log('register error', err)
 		})
 	}
 }

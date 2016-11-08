@@ -27,26 +27,45 @@ const ArticleView = ({ articles, filterKeyword, postArticle }) => {
 	let keywordInput = ''
 	let newArticle
 
+	let fd = new FormData()
 
 	const _filterKeyword = () => {
 		filterKeyword(keywordInput.value)
 	}
 	
 	const _postArticle = () => {
-		if (newArticle && newArticle.value) {
-			postArticle(newArticle.value)
-			newArticle.value = ''
-		}
+		fd.append('text', newArticle.value)
+		console.log(fd)
+		newArticle.value = ''
+		postArticle(fd)
+		fd = new FormData()
+	}
+
+	const handleImageChange = (e) => {
+		fd.append('image', e.target.files[0]);
+		console.log(fd)
 	}
 
 	return (
 		<div>
 
 			<div className="row post-container">
-				<div className="col-md-12">
-					<textarea className="textarea" cols={50} rows={30} ref={ (node) => { newArticle = node }}/>
-					<button className="btn btn-info" onClick={_postArticle}> Post Article </button>
-				</div>	
+				<form>
+					<div className="col-md-3">
+						<input type="file" accept="image/*" onChange={(e) => handleImageChange(e)} />
+					</div>
+
+					<div className="col-md-6">
+						<textarea className="textarea" cols={50} rows={30} ref={ (node) => { newArticle = node }}/>
+						
+					</div>	
+
+					<div className="col-md-6">
+						<input type="button" className="btn btn-info" onClick={_postArticle} value="Post Article" />
+					</div>	
+
+				</form>
+				
 			</div>
 
 			<div className="row">

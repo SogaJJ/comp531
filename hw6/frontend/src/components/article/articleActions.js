@@ -78,28 +78,94 @@ export function postComment(article_id, text) {
 	}
 }
 
-export function postArticle(text) {
-	console.log('in postArticle()')
-	let payload = {
-		text: text
-	}
+export function editComment(article_id, commentId, text) {
+	let endpoint = 'articles/' + article_id
+	var payload = {
+			text: text,
+			commentId: commentId
+		}
 	return (dispatch) => {
-		return resource('POST', 'article', payload)
+		return resource('PUT', endpoint, payload)
+		.then(response => {
+			console.log('response', response)
+
+			dispatch({
+				type: Action.EDIT_COMMENT,
+				article: response.articles[0]
+			})
+
+
+		})
+		.catch((err) => {
+			console.log('editComment error: ' + err);
+		})
+	}
+}
+
+
+export function postArticle(fd) {
+	console.log('in postArticle()', fd.get('text'), fd.get('image'))
+
+	return (dispatch) => {
+		return fetch('https://webdev-dummy.herokuapp.com/article', {
+			method: 'POST',
+			credentials: 'include',
+			body: fd
+		})
+		.then(r => {
+			return (r.headers.get('Content-Type').indexOf('json') > 0) ? r.json() : r.text()
+		})
 		.then(response => {
 			console.log('response is', response.articles[0])
 			dispatch({
 				type: Action.POST_ARTICLE,
 				article: response.articles[0]
 			})
-
 		})
 		.catch((err) => {
 			console.log('postArticle error: ' + err);
+		})	
+	}
+
+	// let payload = {
+	// 	text: text
+	// }
+	// return (dispatch) => {
+	// 	return resource('POST', 'article', payload)
+	// 	.then(response => {
+	// 		console.log('response is', response.articles[0])
+	// 		dispatch({
+	// 			type: Action.POST_ARTICLE,
+	// 			article: response.articles[0]
+	// 		})
+
+	// 	})
+	// 	.catch((err) => {
+	// 		console.log('postArticle error: ' + err);
+	// 	})
+	// }
+}
+
+export function editPost(article_id, text) {
+	console.log('in editPost()', article_id, text)
+	let endpoint = 'articles/' + article_id
+	var payload = {
+			text: text,
+		}
+	return (dispatch) => {
+		return resource('PUT', endpoint, payload)
+		.then(response => {
+			console.log('response is', response.articles[0])
+			dispatch({
+				type: Action.EDIT_ARTICLE,
+				article: response.articles[0]
+			})
+		})
+		.catch((err) => {
+			console.log('editPost error: ' + err);
 		})
 	}
 }
-
-
 
 
 

@@ -26,8 +26,13 @@ const Action = {
 	BEGIN_COMMENT: 'BEGIN_COMMENT',
 	CANCEL_COMMENT: 'CANCEL_COMMENT',
 	POST_COMMENT: 'POST_COMMENT',
+	EDIT_COMMENT: 'EDIT_COMMENT',
 
-	POST_ARTICLE: 'POST_ARTICLE'
+
+	POST_ARTICLE: 'POST_ARTICLE',
+	EDIT_ARTICLE: 'EDIT_ARTICLE',
+
+	UPDATE_AVATAR: 'UPDATE_AVATAR'
 }
 export default Action
 
@@ -44,10 +49,15 @@ export function nav2Landing() {
 }
 
 export function updateError(errMsg) {
-	return {
-		type: Action.ERR,
-		msg: errMsg
+
+	return (dispatch) => {
+		dispatch({type: Action.ERR, msg: errMsg})
+		setTimeout(function(){
+			dispatch({type: Action.ERR, msg: ''})
+		}, 3000)
 	}
+
+	
 }
 
 export function updateSuccess(successMsg) {

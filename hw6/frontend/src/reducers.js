@@ -94,6 +94,16 @@ export const article = (state = initArticleState, action) => {
 				...state,
 				articles: newArticlesPostComments
 			}	
+		case Action.EDIT_COMMENT:
+			let newEditCommentArticle = action.article
+			let newEditCommentArticleid = newEditCommentArticle._id
+			let newnewEditCommentArticles = Object.assign({}, state.articles)
+			newnewEditCommentArticles[newEditCommentArticleid].comments = newEditCommentArticle.comments
+
+			return {
+				...state, 
+				articles: newnewEditCommentArticles
+			}
 		case Action.POST_ARTICLE:
 			let newPostArticle = action.article
 			newPostArticle.showComments = false
@@ -104,6 +114,15 @@ export const article = (state = initArticleState, action) => {
 			return {
 				...state,
 				articles: newArticlesPostArticle
+			}
+		case Action.EDIT_ARTICLE: 
+			let newEditArticle = action.article
+			let editArticleId = newEditArticle._id
+			let newArticlesEdit = Object.assign({}, state.articles)
+			newArticlesEdit[editArticleId].text = newEditArticle.text
+			return {
+				...state,
+				articles: newArticlesEdit
 			}
 		default:
 			return state
@@ -140,6 +159,12 @@ export const profile = (state = initProfileState,  action) => {
 				...state,
 				username: action.username
 			}
+		case Action.UPDATE_AVATAR: 
+			return {
+				...state,
+				avatar: action.avatar
+			}
+			return state
 		case Action.UPDATE_PROFILE :
 			if (action.zipcode) {
 				return {
