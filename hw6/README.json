@@ -1,5 +1,5 @@
 {
 	"netid": "jg37",
 	"frontend": "http://awful-tail.surge.sh",
-	"backend": "http://ricezone.herokuapp.com"
+	"backend": "https://ricezone.herokuapp.com/"
 }
