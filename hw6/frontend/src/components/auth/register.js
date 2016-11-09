@@ -47,7 +47,7 @@ const Register = ({register, sendErr}) => {
 						Username: 
 					</div>
 					<div className="col-md-8">
-						<input type="text" value="aa" id="register-username" name="test" size="30" placeholder="Username" ref={ (node) => { username = node }} >
+						<input type="text" id="register-username" name="test" size="30" placeholder="Username" ref={ (node) => { username = node }} required>
 						</input>
 					</div>
 				</div>
@@ -56,7 +56,7 @@ const Register = ({register, sendErr}) => {
 						Email: 
 					</div>
 					<div className="col-md-8">
-						<input type="text" value="aa@aa.com" id="register-email" name="test" size="30" placeholder="email Address" ref={ (node) => { email = node }} pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" >
+						<input type="text" id="register-email" name="test" size="30" placeholder="email Address" ref={ (node) => { email = node }} pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" required>
 						</input>
 					</div>
 				</div>
@@ -65,7 +65,7 @@ const Register = ({register, sendErr}) => {
 						Date of Birth: 
 					</div>
 					<div className="col-md-8">
-						<input type="text" value="11-11-1111" id="register-dob" name="test" size="30" placeholder="mm-dd-yyyy" ref={ (node) => { dob = node }} pattern="^\d{1,2}-\d{1,2}-\d{4}$" >
+						<input type="text"  id="register-dob" name="test" size="30" placeholder="mm-dd-yyyy" ref={ (node) => { dob = node }} pattern="^\d{1,2}-\d{1,2}-\d{4}$" required>
 						</input>
 					</div>
 				</div>
@@ -74,7 +74,7 @@ const Register = ({register, sendErr}) => {
 						Zipcode: 
 					</div>
 					<div className="col-md-8">
-						<input type="text" value="12345" id="register-zipcode" name="test" size="30" placeholder="zipcode" ref={ (node) => { zipcode = node }} pattern="[0-9]{5}" >
+						<input type="text"  id="register-zipcode" name="test" size="30" placeholder="zipcode" ref={ (node) => { zipcode = node }} pattern="[0-9]{5}" required>
 						</input>
 					</div>
 				</div>
