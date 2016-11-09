@@ -1,7 +1,7 @@
 import fetch from 'isomorphic-fetch'
 
 const localTest = false
-export const url = localTest ? 'http://localhost:1111' : 'https://webdev-dummy.herokuapp.com'
+export const url = localTest ? 'http://localhost:3000' : 'https://webdev-dummy.herokuapp.com'
 
 //const url = 'https://webdev-dummy.herokuapp.com'
 

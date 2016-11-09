@@ -54,11 +54,11 @@ const Profile = ({avatar, headline, email, zipcode, username, updateAvatar, upda
 		
 		if (pwdField && pwdField.value || (pwdCfmField && pwdCfmField.value)) {
 			if (pwdField.value !== pwdCfmField.value) {
-		        msg = msg + 'password not match \n'
+		        msg = msg + 'password not match\n'
 		        correctMsg = correctMsg && false
 			} else {
 				updatePwd(pwdField.value)
-				msg = msg + 'udpate password \n'
+				msg = msg + 'udpate password\n'
 			}
 			pwdField.value = ''
 			pwdCfmField.value = ''
@@ -130,22 +130,22 @@ const Profile = ({avatar, headline, email, zipcode, username, updateAvatar, upda
 							<div className="col-md-2">
 								Email:
 							</div>
-							<div className="col-md-3">
+							<div className="col-md-3" id="profile-email" >
 								{email}
 							</div>
 							<div className="col-md-7">
-								<input type="text" size = {30} ref={ (node) => { emailField = node }} placeholder="update your email" />
+								<input type="text" size = {30} id="profile-update-email" ref={ (node) => { emailField = node }} placeholder="update your email" />
 							</div>		     
 						</div>
 						<div className="row info">
 							<div className="col-md-2">
 								Zipcode:
 							</div>
-							<div className="col-md-3">
+							<div className="col-md-3" id="profile-zipcode">
 								{zipcode}
 							</div>
 							<div className="col-md-7">
-								<input type="text" size = {30} ref={ (node) => { zipcodeField = node }} placeholder="update your zipcode" />
+								<input type="text" size = {30} id="profile-update-zipcode" ref={ (node) => { zipcodeField = node }} placeholder="update your zipcode" />
 							</div>		     
 						</div>
 						<div className="row info">
@@ -156,7 +156,7 @@ const Profile = ({avatar, headline, email, zipcode, username, updateAvatar, upda
 								
 							</div>
 							<div className="col-md-7">
-								<input type="password" size = {30} ref={ (node) => { pwdField = node }} placeholder="Password" />
+								<input type="password" size = {30} id="profile-update-password" ref={ (node) => { pwdField = node }} placeholder="Password" />
 							</div>		     
 						</div>
 						<div className="row info">
@@ -167,13 +167,13 @@ const Profile = ({avatar, headline, email, zipcode, username, updateAvatar, upda
 								
 							</div>
 							<div className="col-md-7">
-								<input type="password" size = {30} ref={ (node) => { pwdCfmField = node }} placeholder="Confirm Password" />
+								<input type="password" size = {30} id="profile-update-password-confirm" ref={ (node) => { pwdCfmField = node }} placeholder="Confirm Password" />
 							</div>		     
 						</div>
 						<div className="row info">
 							<div className="col-md-5"></div>
 							<div className="col-md-2">
-								<button className="btn btn-primary" onClick={_updateProfile}> Update </button>
+								<button className="btn btn-primary" id="profile-update-btn" onClick={_updateProfile}> Update </button>
 							</div>
 							<div className="col-md-2">
 								<button className="btn btn-danger"> Clear </button>
@@ -185,7 +185,7 @@ const Profile = ({avatar, headline, email, zipcode, username, updateAvatar, upda
 					</div>
 					
 
-					<div className="col-md-10" ref={ (node) => { profileMsg = node }} >
+					<div className="col-md-10" id='profile-message' ref={ (node) => { profileMsg = node }} >
 						
 					</div>
 				</div>	

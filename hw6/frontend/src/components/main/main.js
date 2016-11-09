@@ -15,7 +15,7 @@ const Main = () => {
 							<div className="col-md-3">
 								<NaviBar />
 							</div>
-							<div className="col-md-9 main-header">
+							<div className="col-md-9 main-header" id="main-page-header">
 								<h1>Welcome come to Rice Zone!</h1>
 							</div>
 

@@ -9,10 +9,10 @@ const NaviBar = ({ toMain, toLanding, toProfile , logout}) => {
 			<button className='btn btn-danger btn-navi' onClick={toMain} > Main 
 			</button>
 
-			<button className='btn btn-warning btn-navi'onClick={logout}> Log out 
+			<button className='btn btn-warning btn-navi' id="logout" onClick={logout}> Log out 
 			</button>
 
-			<button className='btn btn-info btn-navi'onClick={toProfile}> Profile 
+			<button className='btn btn-info btn-navi' id="nav-to-profile" onClick={toProfile}> Profile 
 			</button>
 		</div>
 	)

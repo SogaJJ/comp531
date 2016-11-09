@@ -27,7 +27,7 @@ const Login = ({login}) => {
 					Account: 
 				</div>
 				<div className="col-md-8">
-					<input type='text' value="jg37test" ref={ (node) => { username = node }}></input>
+					<input type='text' id="username" ref={ (node) => { username = node }}></input>
 				</div>
 			</div>
 
@@ -36,7 +36,7 @@ const Login = ({login}) => {
 					Password: 
 				</div>
 				<div className="col-md-8">
-					<input type='password' value="length-butter-fierce" ref={(node) => { password = node }}></input>
+					<input type='password' id="password" ref={(node) => { password = node }}></input>
 				</div>
 			</div>
 
@@ -44,7 +44,7 @@ const Login = ({login}) => {
 
 	
 			<div className='col-md-12'>	
-			<button className='btn btn-primary' onClick={_login}> login </button>
+			<button className='btn btn-primary' id="login" onClick={_login}> login </button>
 			</div>
 		</div>
 	)

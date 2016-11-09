@@ -31,11 +31,11 @@ const Landing = ({ errorMsg, updateMsg }) => {
 			</div>
 
 			<div className="row">
-				<h4 className="landing-error-msg">{errorMsg}</h4>
+				<h4 className="landing-error-msg" id="error-message" >{errorMsg}</h4>
 			</div>
 
 			<div className="row">
-				<h4 className="landing-success-msg">{updateMsg}</h4>
+				<h4 className="landing-success-msg" id="success-message" >{updateMsg}</h4>
 			</div>
 
 			<div className="footer">

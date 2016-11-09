@@ -31,8 +31,8 @@ const FollowingView = ({ followers, addFollower }) => {
 
 			<div className="row">
 				<div className="col-md-8 col-md-offset-2">
-					<input type="text" placeholder="new friend" ref={ (node) => { friendToAdd = node }}/>
-					<button onClick={_addFollower}> Add </button>
+					<input type="text" id="add-follower-field" placeholder="new friend" ref={ (node) => { friendToAdd = node }}/>
+					<button id="add-follower-btn" onClick={_addFollower}> Add </button>
 				</div>
 				
 			</div>

@@ -5,7 +5,15 @@ import { filterKeyword, postArticle } from './articleActions'
 
 export function processArticles (articles, keyword ) {
 	
-	let originArticles = Object.keys(articles).sort().map(_id => articles[_id])
+	let originArticles = Object.keys(articles).map(_id => articles[_id]).sort((o1, o2) => {
+		if (o1.date === o2.date) {
+			return 0
+		} else if (o1.date < o2.date) {
+			return 1
+		} else {
+			return -1
+		}
+	})
 
 	let filteredArticles
 	if (keyword === '') {
@@ -16,10 +24,10 @@ export function processArticles (articles, keyword ) {
 				   article.text.toLowerCase().indexOf(keyword.toLowerCase()) >= 0
 		})
 	} 
-	let sortedFilteredArticles = filteredArticles.sort((article1, article2)=> {
-		return article2.date - article1.date
-	})
-	return sortedFilteredArticles
+	// let sortedFilteredArticles = filteredArticles.sort((article1, article2)=> {
+	// 	return article2.date - article1.date
+	// })
+	return filteredArticles
 }
 
 
@@ -56,12 +64,12 @@ const ArticleView = ({ articles, filterKeyword, postArticle }) => {
 					</div>
 
 					<div className="col-md-6">
-						<textarea className="textarea" cols={50} rows={30} ref={ (node) => { newArticle = node }}/>
+						<textarea className="textarea" id="article-post-textarea" cols={50} rows={30} ref={ (node) => { newArticle = node }}/>
 						
 					</div>	
 
 					<div className="col-md-6">
-						<input type="button" className="btn btn-info" onClick={_postArticle} value="Post Article" />
+						<input type="button" className="btn btn-info" id="article-post-btn" onClick={_postArticle} value="Post Article" />
 					</div>	
 
 				</form>
@@ -70,8 +78,8 @@ const ArticleView = ({ articles, filterKeyword, postArticle }) => {
 
 			<div className="row">
 				<div className="col-md-12">
-					<input type="text" size={50} ref={ (node) => { keywordInput = node }} />
-					<button className="btn btn-info" onClick={_filterKeyword}> Filter </button>
+					<input type="text" id="keyword-field" size={50} ref={ (node) => { keywordInput = node }} />
+					<button className="btn btn-info" id="keyword-filter-btn" onClick={_filterKeyword}> Filter </button>
 				</div>	
 			</div>
 

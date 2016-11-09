@@ -22,13 +22,13 @@ const Headline = ({username, headline, avatar, updateHeadline}) => {
 				<h4> {username} </h4>
 			</div>
 
-			<div className="col-md-12">
+			<div className="col-md-12" id="main-headline">
 				<h4> {headline} </h4>
 			</div>
 
 			<div className="col-md-12">
-				<input type="text" ref ={ (node) => { newHeadline = node }}/> 
-				<button onClick={_updateHeadline}> Update Headline</button>
+				<input type="text" id="main-headline-field" ref ={ (node) => { newHeadline = node }}/> 
+				<button onClick={_updateHeadline} id="main-headline-udpate-btn" > Update Headline</button>
 			</div>			
 		</div>
 	)

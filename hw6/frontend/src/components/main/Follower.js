@@ -10,7 +10,7 @@ const Follower = ({ username, headline, avatar, removeFollower }) => {
 
 
 	return (
-		<div>
+		<div className="follower">
 			<div className="row">
 				<div className="col-md-4">
 					<img className="follower-img" src={avatar} />
@@ -18,12 +18,12 @@ const Follower = ({ username, headline, avatar, removeFollower }) => {
 
 				<div className="col-md-7 follower-box">
 					<div className="row">
-						<h4>{username}</h4>
+						<h4 className="follower-name" >{username}</h4>
 						<h5>{headline}</h5>
 					</div>
 					
 					<div className="row">
-						<button onClick={_removeFollower}> unfriend </button>
+						<button className="unfriend-btn" onClick={_removeFollower}> unfriend </button>
 					</div>
 				</div>
 			</div>
