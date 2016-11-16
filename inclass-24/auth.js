@@ -2,7 +2,6 @@
 
 
 var redis = require('redis').createClient("redis://h:p5q732uj3cnmt73ihj9848vcipe@ec2-23-23-247-182.compute-1.amazonaws.com:10789")
-
 var request = require('request')
 var qs = require('querystring')
 var express = require('express')
@@ -10,38 +9,9 @@ var cookieParser = require('cookie-parser')
 var session = require('express-session')
 var passport = require('passport')
 var FacebookStrategy = require('passport-facebook').Strategy;
-
-// facebook Oauth
-const clientSecret = '0ed7ea0892bb42bfa48094a96b7b5a1e'
-const clientID = '196939974094911'
-const callbackURL = 'http://localhost:3000/auth/callback'
-const config = { clientSecret, clientID, callbackURL }
-
-passport.serializeUser(function(user, done) {
-	var user = users[id]
-	done(null, user.id)
-})
-
-passport.deserializeUser(function(id, done) {
-	var user = users[id]
-	done(null, user)
-})
-
-passport.use(new FacebookStrategy(config,
-	function(token, refreshToken, profile, done) {
-		process.nextTick(function() {
-			return done(null, profile)
-		})
-	})
-)
-
-
-
-
-
-
 var cookieParser = require('cookie-parser')
 const md5 = require('md5')
+
 
 var pepper = md5('This is my secret pepper')
 
@@ -105,35 +75,6 @@ function login(req, res) {
 }
 
 
-function password(req, res) {
-	res.status(200).send({
-		username: 'jg37test',
-		status: 'will not change'
-	})
-}
-
-function stubLogin(req, res){
-	res.status(200).send({
-		username: 'jg37test',
-		status: 'success'
-	})
-}
-
-function stubLogout(req, res){
-	res.status(200).send({
-		username: 'jg37test',
-		status: 'success'
-	})
-}
-
-function stubRegister(req, res){
-	res.status(200).send({
-		username: 'jg37test',
-		status: 'success'
-	})
-}
-
-
 const logout = (req, res) => {
 	var sid = req.cookies[cookieKey]
 	redis.del(sid)
@@ -165,28 +106,45 @@ const hello = (req, res) => {
 	res.send('hello world from Jing!')
 }
 
-function profile(req,res){
-	res.send({'ok now what?':req.user})
-}
+const config = { 
+	clientSecret: '0ed7ea0892bb42bfa48094a96b7b5a1e', 
+	clientID: '196939974094911', 
+	callbackURL: 'http://localhost:3000/callback' }
 
+var users = {}
+
+passport.serializeUser(function(user, done) {
+    users[user.id] = user
+    done(null, user.id)
+})
+
+passport.deserializeUser(function(id, done) {
+    var user = users[id]
+    done(null, user)
+})
+
+passport.use(new FacebookStrategy(config,
+    function(token, refreshToken, profile, done) {
+        process.nextTick(function() {
+            return done(null, profile)
+        })
+    })
+)
 
 module.exports = app => {
+	// facebook login
 	app.use(session({secret: 'asdf'}));
 	app.use(passport.initialize());
 	app.use(passport.session());
 	app.use('/login/facebook', passport.authenticate('facebook', { scope: 'email' }))
 	app.use('/callback', passport.authenticate('facebook', {
-		successRedirect: '/profile', failureRedirect: '/fail'
+		successRedirect: '/hello', failureRedirect: '/fail'
 	}))
 	app.use('/hello', hello)
-	app.use('/profile',profile)
 	app.use('/fail', fail)
-	// app.use('/logout', logout)
 	
-
-
+	// general login
 	app.use(cookieParser())
-
 	app.post('/login', login)
 	app.put('/logout', isLoggedIn, logout)
 	app.post('/register', register)
