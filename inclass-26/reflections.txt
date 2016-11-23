@@ -1,0 +1,19 @@
+• What did you hope to learn but did not?
+I couldn't think of any specidic techniques. 
+
+
+• What did you really enjoy learning about?
+I am really enjoying learning react and redux. After finishing the frountend using React and Redux, I found them really powerful and convenient. 
+
+• What worked well in the course? and how?
+I think the in-class works very well. Every time, I can learn some knowledge point from in-class assignment, and then after several lectures, I can integrate all the knowledge when I am working on the homeworks. Also, I think the overall structure of the course is great. 
+
+• What did not work well in the course and how might it be improved?
+Sometime, I will get lost by the sample code in your slides. Usually when I lost at one point, it's hard for me to catch up the rest of the lecture. I think instructor can explain the sample code in the lecture with some details.
+
+• What could I have done to help you more, presentation of material, design of in class
+exercises, goals of projects – and be specific please!
+I think the presentation and paper review is not super helpful. Skills of presentation and writing papers are hard to improve through few times of practice. I think the two lectures used for presentation could be used to introduce the newest technique in web or talk about some system design knowledge regards of web. 
+
+• Anything else you like to say?
+I think the in-class exercises are very helpful. However, there are some in-class that takes me lots of time. I think the reason is some of the knowledge for in-class is not well-explained in the slides, and we have to ask instructor in person. 
