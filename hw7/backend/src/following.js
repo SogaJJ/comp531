@@ -19,14 +19,21 @@ function getFollowing(req, res) {
 }
 
 function putFollowing(req, res) {
+	console.log('in putFollowing()')
 	const userAdding = req.params.user
 	if (!userAdding) {
 		res.status(400).send('No user to be added!')
 		return
 	}
 	Profile.findOne({username: userAdding}).exec(function(err, follower){
-		console.log(follower)
-		if (!follower || follower.username === req.username) {
+		console.log('follower', follower)
+		console.log('err', err)
+		if (!follower) {
+			console.log('no such follower to add')
+			res.status(400).send('no such follower to add')
+			return
+		}
+		if (follower.username === req.username) {
 			Profile.findOne({username: req.username}).exec(function(err, profile) {
 				res.send({
 					username: req.username,

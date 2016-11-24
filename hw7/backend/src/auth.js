@@ -24,6 +24,8 @@ const register = (req, res) => {
 	const zipcode = req.body.zipcode
 	const email = req.body.email
 
+	console.log('In register', zipcode)
+
 	if (!username || !password) {
 		res.sendStatus(400)
 		return
@@ -47,7 +49,7 @@ const register = (req, res) => {
 		const newProfile = {
 			username: username, 
 			headline: 'default headline', 
-			avatar: 'https://en.wikipedia.org/wiki/David_Leebron#/media/File:DWLeebron.jpg', 
+			avatar: "http://kids.nationalgeographic.com/content/dam/kids/photos/animals/Fish/A-G/clown-anemonefish-tentacles.jpg", 
 			zipcode: zipcode, 
 			dob: dob, 
 			email: email, 
@@ -100,6 +102,7 @@ const logout = (req, res) => {
 }
 
 const isLoggedIn = (req, res, next) => {
+	console.log('in isLoggedIn()...')
 	var sid = req.cookies[cookieKey]
 	redis.hgetall(sid, function(err, userObj) {
 		if (userObj && userObj.username) {
@@ -112,8 +115,11 @@ const isLoggedIn = (req, res, next) => {
 }
 
 const changePwd = (req, res) => {
-	const username = req.body.username
+	console.log('in changePwd()...')
+	const username = req.username
 	const password = req.body.password
+
+	console.log('username: ', username, '. password: ', password)
 	const salt = saltGenerator(username)
 	const hash = md5(password + salt + pepper)
 	const newUser = {

@@ -64,7 +64,7 @@ function putArticles(req, res) {
 				text: req.body.text,
 				commentId: article.comments.length + 1
 			}
-			Article.findOneAndUpdate({_id: id, author: req.username}, 
+			Article.findOneAndUpdate({_id: id}, 
 				{$push: {comments: newComment}},
 				{new: true}).exec(function(err, article) {
 					if (err) {
@@ -89,6 +89,8 @@ function putArticles(req, res) {
 }
 
 function postArticle(req, res) {
+	console.log('inside postArticle()', req.body.text)
+
 	if (!req.body.text) {
 		res.status(400).send('no supplied article!')
 		return
@@ -96,8 +98,8 @@ function postArticle(req, res) {
 	const newArticle = {
 			author:req.username,
 			text:req.body.text,
-			data: new Date(),
-			img: '',
+			date: new Date(),
+			img: null,
 			comments:[]
 	}
 	new Article(newArticle).save((err, article) => {

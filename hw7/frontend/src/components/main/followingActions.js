@@ -1,4 +1,4 @@
-import Action, { nav2Main, resource } from '../../actions'
+import Action, { nav2Main, resource, addFollowerError} from '../../actions'
 
 
 
@@ -44,6 +44,7 @@ export function addFollower(userId) {
 		})
 		.catch( (err) => {
 			console.log('addFollower error: '+err);
+			dispatch(addFollowerError('Invalid user:' + userId));
 		})
 	}
 }

@@ -7,11 +7,13 @@ const Profile = require('./model.js').Profile
 
 const getHeadlines = (req, res) => {
 	const users = req.params.users ? req.params.users.split(',') : [req.username]
+	console.log(users)
 	Profile.find({username: {$in: users}}).exec(function(err, profiles) {
 		if (!profiles) {
 			res.status(400).send('No profile found for requested users')
 			return
 		}
+		console.log(profiles)
 		const foundProfiles = profiles.map(profile => {
 			return {username: profile.username, headline:profile.headline}
 		})
@@ -101,6 +103,7 @@ const putZipcode = (req, res) => {
 
 const getAvatars = (req, res) => {
 	const users = req.params.users ? req.params.users.split(',') : [req.username]
+	console.log(users)
 	Profile.find({username: {$in: users}}).exec(function(err, profiles) {
 		if (!profiles) {
 			res.status(400).send('No profile found for requested users')
@@ -114,7 +117,13 @@ const getAvatars = (req, res) => {
 }
 
 const putAvatar = (req, res) => {
-	res.send('stub for now')
+	Profile.findOneAndUpdate({username: req.username}, {avatar: req.body.avatar}, {new:true}).exec(function(err, test) {
+		res.send({
+			avatar: test
+		})
+
+
+	})
 }
 
 const getDOB = (req, res) => {
@@ -153,7 +162,7 @@ module.exports = app => {
 	app.get('/zipcode/:user?', isLoggedIn,  getZipcode)
 	app.put('/zipcode', isLoggedIn,  putZipcode)
 
-	app.get('/avatars/:user?', isLoggedIn,  getAvatars)
+	app.get('/avatars/:users?', isLoggedIn,  getAvatars)
 	app.put('/avatar', isLoggedIn, putAvatar)
 
 	app.get('/dob', isLoggedIn, getDOB)

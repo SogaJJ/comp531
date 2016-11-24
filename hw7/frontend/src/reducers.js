@@ -129,7 +129,7 @@ export const article = (state = initArticleState, action) => {
 	}
 }
 
-export const initFollowState = {followers:{}}
+export const initFollowState = {followers:{}, followerErrMsg: ''}
 
 export const follow = (state = initFollowState, action) => {
 	switch(action.type) {
@@ -137,6 +137,11 @@ export const follow = (state = initFollowState, action) => {
 			return {
 				...state, 
 				followers: action.followers
+			}
+		case Action.PROFILE_ERR:
+			return {
+				...state,
+				followerErrMsg: action.msg
 			}
 		default:
 			return state

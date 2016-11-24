@@ -1,7 +1,7 @@
 import fetch from 'isomorphic-fetch'
 
-const localTest = true
-export const url = localTest ? 'http://localhost:3000' : 'https://webdev-dummy.herokuapp.com'
+const localTest = false
+export const url = localTest ? 'http://localhost:3000' : 'https://ricezone.herokuapp.com'
 
 
 const Action = {
@@ -31,7 +31,9 @@ const Action = {
 	POST_ARTICLE: 'POST_ARTICLE',
 	EDIT_ARTICLE: 'EDIT_ARTICLE',
 
-	UPDATE_AVATAR: 'UPDATE_AVATAR'
+	UPDATE_AVATAR: 'UPDATE_AVATAR',
+
+	PROFILE_ERR: 'PROFILE_ERR'
 }
 export default Action
 
@@ -48,16 +50,23 @@ export function nav2Landing() {
 }
 
 export function updateError(errMsg) {
-
 	return (dispatch) => {
 		dispatch({type: Action.ERR, msg: errMsg})
 		setTimeout(function(){
 			dispatch({type: Action.ERR, msg: ''})
 		}, 3000)
 	}
-
-	
 }
+
+export function addFollowerError(errMsg) {
+	return (dispatch) => {
+		dispatch({type: Action.PROFILE_ERR, msg: errMsg})
+		setTimeout(function(){
+			dispatch({type: Action.PROFILE_ERR, msg: ''})
+		}, 3000)
+	}
+}
+
 
 export function updateSuccess(successMsg) {
 	return {

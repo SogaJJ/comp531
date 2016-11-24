@@ -14,7 +14,7 @@ var userSchema = new mongoose.Schema({
 })
 
 var profileSchema = new mongoose.Schema({
-	username: String, headline: String, avatar: String, zipcode: String, dob: Number, 
+	username: String, headline: String, avatar: String, zipcode: String, dob: String, 
 	email: String, following: [String]
 })
 exports.Article = mongoose.model('article', articleSchema)

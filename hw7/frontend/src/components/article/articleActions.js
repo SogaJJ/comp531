@@ -1,6 +1,6 @@
 import Promise from 'bluebird'
 
-import Action, { nav2Landing, nav2Main, resource } from '../../actions'
+import Action,  { url,nav2Landing, nav2Main, resource } from '../../actions'
 import { getProfile, getHeadline} from '../profile/profileActions'
 import {getFollowers} from '../main/followingActions'
 
@@ -102,12 +102,31 @@ export function editComment(article_id, commentId, text) {
 	}
 }
 
-
 export function postArticle(fd) {
+	const payload = {
+		text: fd.get('text')
+	}
+	console.log(payload)
+	return (dispatch) => {
+		return resource('POST', 'article', payload)
+		.then(response => {
+			console.log('response is', response.articles[0])
+			dispatch({
+				type: Action.POST_ARTICLE,
+				article: response.articles[0]
+			})
+		})
+		.catch((err) => {
+			console.log('postArticle error: ' + err);
+		})	
+	}
+}
+
+export function postArticleWithImage(fd) {
 	console.log('in postArticle()', fd.get('text'), fd.get('image'))
 
 	return (dispatch) => {
-		return fetch('https://webdev-dummy.herokuapp.com/article', {
+		return fetch(url + '/article', {
 			method: 'POST',
 			credentials: 'include',
 			body: fd
@@ -126,24 +145,6 @@ export function postArticle(fd) {
 			console.log('postArticle error: ' + err);
 		})	
 	}
-
-	// let payload = {
-	// 	text: text
-	// }
-	// return (dispatch) => {
-	// 	return resource('POST', 'article', payload)
-	// 	.then(response => {
-	// 		console.log('response is', response.articles[0])
-	// 		dispatch({
-	// 			type: Action.POST_ARTICLE,
-	// 			article: response.articles[0]
-	// 		})
-
-	// 	})
-	// 	.catch((err) => {
-	// 		console.log('postArticle error: ' + err);
-	// 	})
-	// }
 }
 
 export function editPost(article_id, text) {

@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import Follower from './follower'
 import { addFollower } from './followingActions'
 
-const FollowingView = ({ followers, addFollower }) => {
+const FollowingView = ({ followers, addFollower, followerErrMsg }) => {
 
 	let friendToAdd
 	const _addFollower = () => {
@@ -34,9 +34,11 @@ const FollowingView = ({ followers, addFollower }) => {
 					<input type="text" id="add-follower-field" placeholder="new friend" ref={ (node) => { friendToAdd = node }}/>
 					<button id="add-follower-btn" onClick={_addFollower}> Add </button>
 				</div>
-				
 			</div>
 
+			<div className="row">
+				<h4 className="landing-error-msg" id="error-message" >{followerErrMsg}</h4>
+			</div>
 
 		</div>
 	)
@@ -45,7 +47,8 @@ const FollowingView = ({ followers, addFollower }) => {
 export default connect(
 	(state) => {
 		return {
-			followers: state.follow.followers
+			followers: state.follow.followers,
+			followerErrMsg: state.follow.followerErrMsg
 		}
 	}, (dispatch) => {
 		return {
