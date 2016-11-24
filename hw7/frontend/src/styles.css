@@ -1,0 +1,234 @@
+.navi_bar {
+	background-color: #0f52ba;
+	border: solid black 1pt;
+	border-radius: 10px;
+	align-content: center;
+	vertical-align: middle;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	margin-top: 30px;
+	margin-bottom: 10px;
+}
+.btn-navi {
+	border: solid black 1pt;
+	margin-left: 10px;
+	margin-bottom: 10px;
+	margin-top: 10px;
+}
+.btn {
+	
+}
+
+.profile-message-wrong {
+	margin-top: 10px;
+	margin-bottom: 10px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	background-color: #ffb2b2;
+	text-align: center;
+}
+
+.profile-message-right {
+	margin-top: 10px;
+	margin-bottom: 10px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	background-color: #b5ffb2;
+	text-align: center;
+}
+
+.main-avatar {
+	width: 300px;
+}
+.profile-avatar {
+	width: 300px;
+}
+.space-row {
+	margin-top: 10px;
+	margin-bottom: 10px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+
+.textarea {
+	height: 50px;
+	width: auto;
+
+}
+.article-img {
+	height: 100px;
+	float: left;
+	margin: 10px;
+}
+.not-show-comment {
+	display: none;
+}
+.main-content-container {
+	margin-top: 20px;
+	margin-bottom: 30px;
+}
+.follower-box {
+	vertical-align: middle;
+}
+.register-login-title {
+	text-align: center;
+	margin-top: 5px;
+	padding-top: 5px;
+	margin-bottom: 15px;
+}
+.post-field {
+	line-height: 20px;
+}
+.register-form {
+	align-content: center;
+	margin-left: auto;
+	margin-right: auto;
+	padding-left: auto;
+	text-align: center;
+}
+.input-field {
+	margin-top: 20px;
+	margin-top: 10px;
+	margin-left: 10px;
+}
+.register-input-row {
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+.info {
+	padding: 10px;
+}
+.post-container {
+	margin-bottom: 20px;
+	height: 50px;
+}
+.comment-author-container {
+	background-color:#ffff99;
+	margin-top: 5px;
+}
+
+.comment-update-container {
+	margin-top: 5px;
+}
+
+.not-show-comment-edit {
+	display: none;
+}
+
+.comment-author {
+	font-weight: bold;
+}
+
+.comment-content {
+	background-color: #ffffcc;
+}
+
+.article-container {
+	border-radius: 5px;
+	background-color: #f4fef4;
+}
+
+.add-comment-container-not-shown {
+	display:none;
+}
+
+.add-comment-container {
+	margin-top: 10px;
+	margin-bottom: 10px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+
+.article-author-container {
+	padding-top: 20px;
+	margin-top:20px;
+	background-color: #d5fdd5;
+}
+
+.article-author  {
+	font-weight: bold;
+}
+
+.article-date {
+	font-style: italic;
+	text-decoration: underline;
+}
+
+
+.landing-error-msg {
+	text-align: center;
+	font-style: italic;
+	color: black;
+	background-color: #ffcccc;
+}
+
+.landing-success-msg {
+	text-align: center;
+	font-style: italic;
+	color: black;
+	background-color: #b5ffb2;
+}
+
+.hr-primary {
+	border: black solid 0.5px;
+}
+
+.follower-img {
+	width: 100px;
+}
+
+.center-container {
+	margin-left: auto;
+	margin-right: auto;
+	align-content: center;
+	padding-left: auto;
+	padding-right: auto;
+}
+
+.landing-header {
+	color: white;
+	padding-bottom: 5px;
+	border-radius: 10px;
+	text-align: center;
+	align-content: center;
+	background-color: #0f52ba;
+	margin-top: 30px;
+	margin-bottom: 30px;
+}
+
+.profile-header {
+	color: white;
+	padding-bottom: 5px;
+	border-radius: 10px;
+	text-align: center;
+	align-content: center;
+	background-color: #0f52ba;
+	margin-top: 30px;
+	margin-bottom: 10px;
+}
+
+.footer {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 0.3rem;
+  background-color: #efefef;
+  text-align: center;
+}
+
+
+.main-header {
+	color: white;
+	padding-bottom: 5px;
+	border-radius: 10px;
+	text-align: center;
+	align-content: center;
+	background-color: #0f52ba;
+	margin-top: 30px;
+	margin-bottom: 1px;
+}
+
+tr.spaced-row > td{
+	padding-top: 20px;
+}
