@@ -1,0 +1,15 @@
+5
+<testsuite name="Mocha Tests" tests="12" failures="0" errors="0" skipped="0" timestamp="Wed, 09 Nov 2016 07:35:32 GMT" time="49.961">
+<testcase classname="Test Landing page..." name="should Register new user" time="6.791"/>
+<testcase classname="Test Landing page..." name="should login as test user" time="4.807"/>
+<testcase classname="Test Main page..." name="Create new article and validate article appears in feed" time="1.695"/>
+<testcase classname="Test Main page..." name="Edit an article and validate changed article text" time="4.528"/>
+<testcase classname="Test Main page..." name="Update headline headline and verify change" time="4.348"/>
+<testcase classname="Test Main page..." name="Add the Follower user and verify following count increases by one" time="2.661"/>
+<testcase classname="Test Main page..." name="Remove the Follower user and verify following count decreases by one, test should be safe" time="2.729"/>
+<testcase classname="Test Main page..." name="Search for special &amp;quot;Only One Article Like This&amp;quot; article and verify author" time="0.704"/>
+<testcase classname="Test Landing page..." name="Update user email and verify" time="1.773"/>
+<testcase classname="Test Landing page..." name="Update user zipcode and verify" time="1.715"/>
+<testcase classname="Test Landing page..." name="Update user password and verify" time="1.901"/>
+<testcase classname="shutdown" name="now" time="0.174"/>
+</testsuite>
