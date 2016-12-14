@@ -8,6 +8,10 @@ const md5 = require('md5')
 const pepper = md5('This is my secret pepper')
 const Promise = require('bluebird')
 
+const localTest = false
+const hostURL = localTest ? 'http://localhost:3000' : 'https://ricezone-hw8.herokuapp.com'
+
+
 const saltGenerator = (username) => {
 	return Math.floor(Math.random() * 10000000000) + username + new Date().getTime()
 }
@@ -121,10 +125,9 @@ const isLoggedIn = (req, res, next) => {
 			} else {
 				if (user) {
 					req.username = user.username
-					console.log('req.username:', req.username)
 					next()
 				} else {
-					res.status(400).send('error find facebook auth')
+					req.status(400).send('err')
 				}
 			}
 		})
@@ -205,7 +208,7 @@ var FacebookStrategy = require('passport-facebook').Strategy;
 const config = { 
 	clientSecret: '0ed7ea0892bb42bfa48094a96b7b5a1e', 
 	clientID: '196939974094911', 
-	callbackURL: 'http://localhost:3000/callback' }
+	callbackURL: hostURL + '/callback' }
 var users = {}
 passport.serializeUser(function(user, done) {
     users[user.id] = user
@@ -324,27 +327,40 @@ const mergeAccount = (req, res, usernameLocal, usernameFB, endFrom, callback) =>
 	console.log('usernameLocal is ', usernameLocal)
 	console.log('usernameFB is ', usernameFB)
 	
+	// update articles and comments
+	Article.update({author: usernameFB}, {$set: {author: usernameLocal}}, {new: true, multi: true}).exec()
+	Comment.update({author: usernameFB}, {$set: {author: usernameLocal}}, {new: true, multi: true}).exec()
 	
-	Profile.findOneAndUpdate({username: usernameLocal}).exec(function(err, localprofile){
-		console.log('localprofile', localprofile)
-		Profile.findOne({username: usernameFB}).exec(function(err, fbprofile){
-			console.log('fbprofile', fbprofile)
+	User.update({username: usernameLocal}, {$set: {"auth.facebook": usernameFB}}).exec(function(err, localuser) {
+		User.findOneAndRemove({username: usernameFB}).exec(function(err, fbuser) {
+			console.log('deleting fb user ... ')
+			Profile.findOneAndRemove({username: usernameFB}).exec(function(err, fbprofile){
+				console.log('deleting fb profile ... ')
+				const fbfollowing = fbprofile.following.filter(function(f){return (f !== usernameLocal) && {}})
+				Profile.findOne({username: usernameLocal}).exec(function(err, localprofile) {
+					let cloned = localprofile.following.slice(0)
+					let merged = cloned.concat(fbfollowing)
+					let res = merged.sort().filter(function(item, pos, ary) {
+				        return !pos || item != ary[pos - 1];
+				    })
+					Profile.update({username:usernameLocal}, {$set: {following: res}}).exec(function(err, localpro2) {
+						callback()
+					})
+				})
+			})
 		})
 	})
-	callback()
-	// Profile.findOne({username: usernameFB}, function(err, FBprofile){
+}
 
-	// 	console.log('find fb account', FBprofile)
-	// 	const followingToMerge = FBprofile.following.filter(function(f){return f !== usernameLocal})
-	// 	console.log('followingToMerge', followingToMerge)
-
-	// 	Profile.findOneAndUpdate({username: usernameLocal}, function(err, Localprofile) {
-	// 		console.log('find local account', Localprofile)
-
-	// 	}).exec()
-
-	// }).exec().then(callback())
-
+const unlink = (req, res) => {
+	console.log('backend: in unlink...')
+	const username = req.username
+	console.log('[backend]: req. username', username)
+	const newAuth = {
+		local: username
+	}
+	User.update({username: username}, {$set: {"auth": newAuth}}).exec()
+	logout(req, res)
 }
 
 // to check whether the account is linked
@@ -392,6 +408,26 @@ const checkAccountLinked = (req, res) => {
 }
 
 
+const helper = (req, res) => {
+	console.log('[backend]: call helper ...')
+	
+
+	// User.findOneAndRemove({username: 'Jing Guo@facebook'}).exec(function(err, user) {
+	// 	console.log('[backend, helper]: user is' , user)
+	// })
+	const newAuth = {
+		local: 'test2'
+	}
+
+	User.update({username: 'test2'}, {$set: {"auth": newAuth}}).exec()
+
+	User.find({username: 'test2'}).exec(function(err, user) {
+		console.log('[backend, helper]: user is' , user)
+	})
+
+	res.send('stub')
+}
+
 module.exports = {
 	setup: app => {
 
@@ -413,6 +449,10 @@ module.exports = {
 		// link account
 		app.get('/checkAccountLinked', isLoggedIn, checkAccountLinked)
 		app.post('/linkToLocal', isLoggedIn, linkToLocal)
+		app.post('/unlink', isLoggedIn, unlink)
+
+		// debug tool
+		app.post('/helper', isLoggedIn, helper)
 	},
 	isLoggedIn: isLoggedIn
 }

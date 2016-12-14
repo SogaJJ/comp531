@@ -1,3 +1,4 @@
+"use strict";
 // this is dbarticle.js 
 var Article = require('./model.js').Article
 

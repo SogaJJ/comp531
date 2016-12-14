@@ -1,4 +1,6 @@
-import Action, { url, resource } from '../../actions'
+import Action, { url, resource, nav2Landing } from '../../actions'
+import {initialVisit, logout} from '../auth/authActions'
+
 
 export function getHeadline(username) {
 	return (dispatch) => {
@@ -151,6 +153,7 @@ export function linkToLocal(username, password) {
 		})
 		.then((response) => {
 			console.log('response', response)
+			dispatch(logout())
 		})
 		.catch((err) => {
 			console.log('linkBtn error: ' + err);
@@ -159,12 +162,38 @@ export function linkToLocal(username, password) {
 }
 
 export function unlink() {
-	console.log('frontend: call unlink ...')
+	console.log('[frontend]: call unlink ...')
+	return (dispatch) => {
+		console.log('11111')
+		return resource('POST', 'unlink')
+		.then((response) => {
+			console.log('response', response)
+			dispatch(nav2Landing())
+		})
+		.catch((err) => {
+			console.log('linkBtn error: ' + err);
+		})
+	}
 }
 
 
 
+export function helper() {
+	return (dispatch) => {
+		console.log('frontend: call helper ...')
+		return resource('POST', 'helper')
+		.then((response) => {
 
+			console.log('helper function works')
+
+
+		})
+		.catch((err) => {
+			console.log('helper error: ' + err);
+		})
+
+	}
+}
 
 
 

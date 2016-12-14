@@ -1,11 +1,11 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import NaviBar from '../main/nav'
-import { updateAvatar, updateEmail, updateZipcode, updatePwd, checkAccount, linkToLocal } from './profileActions'
+import { updateAvatar, updateEmail, updateZipcode, updatePwd, checkAccount, linkToLocal, unlink, helper } from './profileActions'
 import {FBlogin} from '../auth/authActions'
 
 
-const Profile = ({avatar, headline, email, zipcode, username, accoutStat, updateAvatar, updateEmail, updateZipcode,updatePwd, checkAccount, linkToLocal, FBlogin}) => {
+const Profile = ({avatar, headline, email, zipcode, username, accoutStat, updateAvatar, updateEmail, updateZipcode,updatePwd, checkAccount, linkToLocal, FBlogin, unlink, helper}) => {
 
 	let fd = new FormData()
 	let emailField
@@ -146,13 +146,16 @@ const Profile = ({avatar, headline, email, zipcode, username, accoutStat, update
 							</div>
 						</div>
 
-						<div className="col-md-12" id={accoutStat == 'unlink' ? "" : "profile-page-link-local"}>
+						<div className="col-md-12" id={accoutStat == 'linked' ? "" : "profile-page-link-local"}>
 							You are signed in as a linked Account
 							<div className="row space-row">
-								<button className="btn btn-danger">Unlink Account</button>
+								<button className="btn btn-danger" onClick={unlink}>Unlink Account</button>
 							</div>
 
 						</div>
+
+
+						<button className="btn btn-warning" onClick={helper}>helper button</button> 
 
 					</div>
 				</div>	
@@ -269,6 +272,8 @@ export default connect(
 			updatePwd: (pwd) => dispatch(updatePwd(pwd)), 
 			checkAccount: () => dispatch(checkAccount()),
 			linkToLocal: (username, password) => dispatch(linkToLocal(username, password)),
-			FBlogin: () => dispatch(FBlogin())
+			FBlogin: () => dispatch(FBlogin()),
+			unlink: () => dispatch(unlink()),
+			helper: () => dispatch(helper())
 		}
 	})(Profile)

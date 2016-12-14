@@ -1,3 +1,4 @@
+"use strict";
 // this is model.js 
 var mongoose = require('mongoose')
 mongoose.Promise = require('bluebird')

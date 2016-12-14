@@ -1,3 +1,4 @@
+"use strict";
 var mongoose = require('mongoose')
 
 // replace this "localhost" value with the one from heroku/mlab
