@@ -155,7 +155,7 @@ const Profile = ({avatar, headline, email, zipcode, username, accoutStat, update
 						</div>
 
 
-						<button className="btn btn-warning" onClick={helper}>helper button</button> 
+						
 
 					</div>
 				</div>	
