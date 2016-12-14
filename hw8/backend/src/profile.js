@@ -116,20 +116,16 @@ const putAvatar = (req, res) => {
 	console.log("inside putAvatar()")
 	const img = req.fileurl
 	if (!img) {
-		console.log('Mongoose update bad requeset: Profile update ' + req.username)
 		return res.status(400).send({error:'Invalid avatar file url'})	
 	}
 
 	Profile.findOneAndUpdate({username: req.username}, {avatar: img},
 	{new:true}, (err,user) => {
 		if (err) {
-			console.error('Mongoose update failed: Profile update failed since' + err)
 			res.status(500).send({error:err})
 		} else if (!user) {
-			console.log('Mongoose update bad requeset: Profile update ' + req.username)
 			res.status(400).send({error:'Can\'t update zipcode for ' + req.username})	
 		} else {
-			console.log('Mongoose update success: Profile update' + req.username)
 			res.json({username: user.username, avatar:user.avatar})
 		}
 	})
